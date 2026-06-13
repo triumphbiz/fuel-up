@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keto Hormone Meal Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF8;
+    --surface: #FFFFFF;
+    --surface2: #F4F2EE;
+    --border: #E8E4DC;
+    --border2: #D4CFC5;
+    --text: #1A1A18;
+    --text2: #6B6860;
+    --text3: #9B9890;
+    --accent: #1D9E75;
+    --accent-light: #E1F5EE;
+    --accent-dark: #085041;
+    --amber: #FAEEDA;
+    --amber-text: #633806;
+    --purple: #EEEDFE;
+    --purple-text: #3C3489;
+    --coral: #FAECE7;
+    --coral-text: #712B13;
+    --blue: #E6F1FB;
+    --blue-text: #0C447C;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1.25rem 1.5rem; position: sticky; top: 0; z-index: 100; }
+  .header-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); }
+  .logo-text { font-size: 15px; font-weight: 600; color: var(--text); }
+  .logo-sub { font-size: 12px; color: var(--text2); margin-top: 1px; }
+  .header-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .hbadge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--surface2); color: var(--text2); border: 1px solid var(--border); }
+
+  main { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
+
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .tab { padding: 7px 15px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); font-size: 13px; cursor: pointer; color: var(--text2); font-family: inherit; transition: all 0.15s; }
+  .tab:hover { border-color: var(--border2); color: var(--text); }
+  .tab.on { background: var(--text); color: #fff; border-color: var(--text); }
+
+  .sec-label { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text3); margin: 1.5rem 0 .75rem; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 10px; margin-bottom: .75rem; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s; }
+  .card:hover { border-color: var(--border2); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .card.sel { border: 2px solid var(--accent); }
+  .card-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 4px; line-height: 1.4; }
+  .card-time { font-size: 11px; color: var(--text3); margin-bottom: 8px; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .tl { background: var(--accent-light); color: var(--accent-dark); }
+  .pu { background: var(--purple); color: var(--purple-text); }
+  .am { background: var(--amber); color: var(--amber-text); }
+  .co { background: var(--coral); color: var(--coral-text); }
+  .bl { background: var(--blue); color: var(--blue-text); }
+
+  .detail { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.25rem; }
+  .det-name { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+  .det-sub { font-size: 12px; color: var(--text2); margin-bottom: .85rem; }
+  .det-why { font-size: 13px; color: var(--text2); line-height: 1.7; margin-bottom: 1rem; padding: 12px 14px; background: var(--surface2); border-radius: var(--radius-sm); border-left: 3px solid var(--accent); }
+  .det-why strong { color: var(--text); font-weight: 500; }
+
+  .macros { display: flex; gap: 8px; margin-bottom: 1.1rem; }
+  .mac { flex: 1; background: var(--surface2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+  .mac-v { font-size: 16px; font-weight: 600; color: var(--text); }
+  .mac-l { font-size: 10px; color: var(--text3); margin-top: 2px; text-transform: uppercase; letter-spacing: .05em; }
+
+  .det-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .det-h { font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+  .ing-list { list-style: none; }
+  .ing-list li { font-size: 12px; color: var(--text); padding: 4px 0; border-bottom: 1px solid var(--border); line-height: 1.45; }
+  .ing-list li:last-child { border: none; }
+  .method-txt { font-size: 12px; color: var(--text2); line-height: 1.7; }
+
+  .sul-note { font-size: 11px; color: var(--amber-text); background: var(--amber); border-radius: var(--radius-sm); padding: 8px 12px; margin-top: 1rem; display: flex; gap: 6px; align-items: flex-start; line-height: 1.5; }
+  .sul-icon { flex-shrink: 0; margin-top: 1px; }
+
+  .more-btn { margin-top: 1rem; padding: 8px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: var(--surface); font-size: 12px; cursor: pointer; color: var(--text); font-family: inherit; transition: background 0.15s; }
+  .more-btn:hover { background: var(--surface2); }
+
+  .empty { padding: 3rem; text-align: center; color: var(--text3); font-size: 14px; }
+
+  footer { text-align: center; padding: 2rem 1rem; font-size: 11px; color: var(--text3); border-top: 1px solid var(--border); margin-top: 2rem; }
+
+  @media (max-width: 600px) {
+    .det-cols { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    header { padding: 1rem; }
+    .logo-sub { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-dot"></div>
+      <div>
+        <div class="logo-text">Keto Hormone Meal Library</div>
+        <div class="logo-sub">Menopausal support · Sulphite-aware · 23 recipes</div>
+      </div>
+    </div>
+    <div class="header-badges">
+      <span class="hbadge">Weight &amp; metabolism</span>
+      <span class="hbadge">Mood &amp; brain</span>
+      <span class="hbadge">Sleep &amp; energy</span>
+      <span class="hbadge">Bone support</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="tabs" id="tabs"></div>
+  <div id="body"></div>
+</main>
+
+<footer>Built for personal use · Keep sulphite notes in mind when shopping · Always check labels</footer>
+
+<script>
+const CATS=["All","Breakfast","Lunch","Dinner","Snacks & cheese","Protein shakes"];
+const M=[
+  {n:"Bacon, egg & mushroom bake",c:"Breakfast",t:"25 min",s:2,hor:["Metabolism","Energy","Thyroid support"],tags:[["Easy","tl"],["Comfort","am"]],why:"Eggs provide choline for brain function and selenium for thyroid support. Yolk fats help absorb vitamins D and K. Mushrooms are a rare dietary source of vitamin D — important for bone density and mood.",ing:["6 rashers short-cut bacon","4 eggs","200g mushrooms, sliced","100g cheddar, grated","3 tbsp cream","1 tbsp butter","Salt, pepper, fresh thyme"],meth:"Fry bacon, lay in baking dish. Sauté mushrooms in butter, add on top. Whisk cream into eggs, pour over. Top with cheese. Bake 180°C for 15 min until just set.",mac:{f:"38g",p:"34g",c:"2g"},sul:"Use butcher bacon or check labels — some cured bacon contains sulphite preservatives."},
+  {n:"Creamy scrambled eggs with herbs",c:"Breakfast",t:"10 min",s:2,hor:["Brain & mood","Tryptophan","Energy"],tags:[["Quick","tl"],["Brain support","pu"]],why:"Low and slow scrambled eggs in butter deliver choline and tryptophan — the precursor to serotonin and melatonin. Important for mood stability and sleep quality in menopause.",ing:["4 eggs","2 tbsp cream","1 tbsp butter","Fresh parsley or chives","Salt, pepper","2 rashers bacon (optional)"],meth:"Whisk eggs with cream. Melt butter over low heat. Stir slowly with a spatula until just set. Remove while slightly underdone — residual heat finishes them. Top with herbs.",mac:{f:"26g",p:"20g",c:"1g"}},
+  {n:"Baked eggs in tomato & cream",c:"Breakfast",t:"20 min",s:2,hor:["Oestrogen balance","Anti-inflammatory","Metabolism"],tags:[["Comfort","am"],["Anti-inflam","tl"]],why:"Tomatoes cooked in olive oil provide lycopene — a powerful antioxidant that reduces inflammation linked to menopausal symptoms. Fat significantly increases lycopene absorption, making the cream and oil here functional as well as tasty.",ing:["4 eggs","400g tin whole tomatoes","1 clove garlic","3 tbsp cream","30g parmesan, grated","1 tbsp olive oil","Salt, pepper, pinch chilli flakes"],meth:"Sauté garlic in oil. Add tomatoes, crush roughly and simmer 5 min. Stir in cream. Make 4 wells, crack in eggs. Cover and cook 6–8 min until whites just set. Finish with parmesan.",mac:{f:"24g",p:"20g",c:"6g"},sul:"Mutti and Coles Organic tinned tomatoes are generally sulphite-free."},
+  {n:"Tuna & cream cheese stuffed capsicum",c:"Lunch",t:"10 min",s:2,hor:["Omega-3","Vitamin C","Metabolism"],tags:[["No cook","pu"],["Quick","tl"]],why:"Capsicum is exceptionally high in vitamin C — essential for adrenal function and collagen synthesis in menopause. Tuna provides omega-3 for brain and mood. Cream cheese adds rich satiating fat with zero sulphite risk.",ing:["2 tins tuna in olive oil, drained","100g cream cheese","2 large capsicums, halved","Juice of ½ lemon","Fresh chives or parsley","Salt, pepper","Cherry tomatoes to serve"],meth:"Mix tuna with cream cheese, lemon and herbs until smooth. Season well. Spoon generously into capsicum halves. Serve with cherry tomatoes.",mac:{f:"26g",p:"34g",c:"6g"}},
+  {n:"Creamy chicken & mushroom soup",c:"Lunch",t:"30 min",s:2,hor:["Sleep","Adrenal support","Collagen"],tags:[["Comfort","am"],["Collagen","co"]],why:"Chicken simmered in stock releases collagen and gelatin supporting joints and gut lining. Cream stabilises blood sugar which directly supports cortisol regulation and sleep quality.",ing:["400g chicken thighs, diced","200g mushrooms, sliced","500ml chicken stock","150ml cream","1 clove garlic","1 tbsp butter","Fresh thyme, salt, pepper"],meth:"Sauté garlic in butter. Brown chicken. Add mushrooms 3 min. Pour in stock, simmer 15 min. Stir in cream, simmer 5 more min. Season well.",mac:{f:"40g",p:"38g",c:"4g"},sul:"Stock cubes often contain sulphites. Use homemade or Massel salt-reduced chicken stock."},
+  {n:"Tuna, egg & tomato plate",c:"Lunch",t:"10 min",s:2,hor:["Omega-3","Bone support","Metabolism"],tags:[["No cook","pu"],["Quick","tl"]],why:"A no-fuss plate of whole foods. Tuna provides omega-3. Eggs add choline for cognitive function. Tomatoes give lycopene and vitamin C. Olive oil aids absorption of all fat-soluble nutrients.",ing:["2 tins tuna in olive oil","4 hard-boiled eggs, halved","Cherry tomatoes","60g cheddar or parmesan","Handful macadamias","Olive oil, lemon, salt, pepper"],meth:"Arrange everything on a plate or into containers. Drizzle with olive oil and lemon. No cooking required.",mac:{f:"38g",p:"42g",c:"3g"}},
+  {n:"Sirloin with garlic herb butter & roasted veg",c:"Dinner",t:"25 min",s:2,hor:["Iron","Zinc","Hormone synthesis"],tags:[["Classic","tl"],["Iron","pu"],["Quick","tl"]],why:"Grass-fed beef is one of the best sources of zinc — essential for hormone synthesis and skin integrity. It also provides heme iron and B12, both commonly depleted in perimenopause. Garlic herb butter adds fat-soluble vitamins A and K.",ing:["2 sirloin or scotch fillet steaks","3 tbsp butter, softened","2 cloves garlic, minced","2 tbsp fresh parsley","1 tsp fresh thyme","200g green beans","200g cherry tomatoes","Olive oil, salt, pepper"],meth:"Mix butter with garlic and herbs, roll in cling wrap and chill. Roast tomatoes and beans at 200°C for 15 min. Pan-fry steaks in a hot cast iron 3–4 min per side. Rest 5 min. Top with a slice of herb butter to melt over.",mac:{f:"42g",p:"52g",c:"5g"}},
+  {n:"Steak with mustard cream sauce",c:"Dinner",t:"25 min",s:2,hor:["Iron","Metabolism","Adrenal support"],tags:[["Classic","tl"],["Iron","pu"]],why:"Mustard contains glucosinolates that support liver detoxification of spent hormones. Cream-based sauces are naturally low carb and sulphite-safe. Roasted capsicum adds vitamin C which improves iron absorption from the steak.",ing:["2 rump or sirloin steaks","150ml cream","1 tbsp Dijon mustard","1 clove garlic","1 tbsp butter","2 capsicums, roasted","Salt, pepper"],meth:"Pan-fry steaks to your liking, rest on a plate. In same pan sauté garlic 30 sec. Add cream and mustard, simmer 3–4 min until slightly thickened. Spoon over steak with roasted capsicum alongside.",mac:{f:"44g",p:"50g",c:"5g"},sul:"Maille Dijon is generally safe. Avoid pre-made mustard sauces or flavoured mustards."},
+  {n:"Creamy pepper steak",c:"Dinner",t:"20 min",s:2,hor:["Iron","Anti-inflammatory","Metabolism"],tags:[["Classic","tl"],["Quick","tl"],["Iron","pu"]],why:"Black pepper contains piperine which significantly boosts absorption of nutrients including B vitamins and selenium. Cream-based pepper sauce skips sulphite-heavy Worcestershire and wine entirely.",ing:["2 scotch fillet or rump steaks","150ml cream","1 tbsp cracked black pepper","1 clove garlic","1 tbsp butter","1 tsp Dijon mustard","50ml beef stock","Salt"],meth:"Press cracked pepper firmly into both sides of steaks. Sear in a very hot pan in butter to your liking. Rest steaks. In same pan add garlic, stock, cream and mustard. Simmer 3–4 min. Pour over steaks.",mac:{f:"42g",p:"50g",c:"2g"},sul:"Use homemade beef stock or check labels — avoid preservative numbers 220–221."},
+  {n:"Slow-cooked lamb with garlic & rosemary",c:"Dinner",t:"1.5 hrs",s:2,hor:["Iron","Bone support","Hormone synthesis"],tags:[["Classic Aussie","tl"],["Iron","pu"],["Slow cook","am"]],why:"Lamb is rich in zinc, heme iron and B12. A simple roast needs zero processed ingredients — one of the most sulphite-safe dinners possible. Rosemary contains rosmarinic acid, a neuroprotective antioxidant.",ing:["600g lamb leg or shoulder, bone-in","4 cloves garlic, slivered","Fresh rosemary sprigs","2 tbsp olive oil","300g green beans or eggplant","Salt, pepper"],meth:"Score lamb all over, press garlic slivers and rosemary into cuts. Rub with olive oil, season generously. Roast at 180°C — 25 min per 500g for medium. Rest 10 min before carving.",mac:{f:"34g",p:"50g",c:"3g"}},
+  {n:"Slow-cooked beef cheeks",c:"Dinner",t:"3.5 hrs (hands-off)",s:2,hor:["Bone & joint","Iron","Collagen"],tags:[["Collagen","co"],["Slow cook","am"],["Iron","pu"]],why:"Beef cheeks are collagen-dense — long slow cooking converts it to gelatin, supporting joints and gut lining. No wine needed; stock and tomato develop deep flavour naturally. Genuinely therapeutic for joint pain.",ing:["600g beef cheeks or chuck","400ml beef stock","400g tin crushed tomatoes","1 clove garlic","1 tbsp tomato paste","Fresh thyme, bay leaf","1 tbsp butter","Salt, pepper"],meth:"Sear beef all over in butter until browned. Add all remaining ingredients. Cover and cook 150°C for 3 hrs. Sauce thickens naturally. Serve with roasted green beans or eggplant.",mac:{f:"28g",p:"52g",c:"6g"},sul:"No wine in this recipe. Avoid stock with preservative 220 or 221 on label."},
+  {n:"Butter chicken (from scratch)",c:"Dinner",t:"35 min",s:2,hor:["Anti-inflammatory","Adrenal support","Metabolism"],tags:[["Comfort","am"],["Anti-inflam","tl"]],why:"Turmeric and ginger reduce systemic inflammation which worsens joint pain and hot flushes. Made entirely from individual spices — completely sulphite and additive-free. Cream and butter make it genuinely satiating.",ing:["500g chicken thighs, diced","200ml cream","2 tbsp butter","400g tin crushed tomatoes","1 clove garlic","1 tsp turmeric","1 tsp cumin","½ tsp paprika","½ tsp fresh ginger, grated","Salt"],meth:"Brown chicken in butter. Add garlic, ginger and spices, stir 1 min. Add tomatoes, simmer 10 min. Stir in cream, simmer 5 min until sauce thickens. Taste and adjust seasoning.",mac:{f:"46g",p:"42g",c:"7g"},sul:"Always use individual spices — pre-made curry powders and pastes commonly contain sulphites."},
+  {n:"Creamy veggie bake with cream cheese sauce",c:"Dinner",t:"40 min",s:2,hor:["Bone support","Anti-inflammatory","Oestrogen balance"],tags:[["Comfort","am"],["Veggie","tl"],["Bone support","co"]],why:"Cream cheese sauce is naturally low carb and sulphite-free. High-fibre keto vegetables support gut bacteria diversity, important for oestrogen metabolism. Parmesan adds calcium and vitamin K2 for bone support.",ing:["1 eggplant, sliced","2 capsicums, sliced","1 leek, sliced (white part)","150g green beans","150g cream cheese","100ml cream","50g parmesan, grated","1 clove garlic","1 tbsp butter","Salt, pepper, dried Italian herbs"],meth:"Roast veg with olive oil at 200°C for 20 min. Melt butter, add garlic, then cream cheese and cream — stir until smooth. Layer veg in baking dish, pour sauce over, top with parmesan. Bake 180°C for 15 min.",mac:{f:"38g",p:"16g",c:"10g"}},
+  {n:"White fish with garlic butter & beans",c:"Dinner",t:"15 min",s:2,hor:["Omega-3","Thyroid support","Bone support"],tags:[["Quick","tl"],["Light","bl"]],why:"White fish provides iodine — critical for thyroid function which often shifts in menopause, affecting weight and energy. Simple garlic butter has zero sulphite risk and delivers fat-soluble vitamins alongside flavour.",ing:["2 white fish fillets (barramundi, flathead or snapper)","3 tbsp butter","2 cloves garlic, minced","Juice of ½ lemon","2 tbsp fresh parsley","200g green beans","Salt, pepper"],meth:"Blanch green beans until just tender. Pat fish dry, season well. Cook in butter 3–4 min per side. Add garlic and lemon in the final minute. Spoon the butter over to serve.",mac:{f:"24g",p:"38g",c:"4g"}},
+  {n:"Baked parmesan crisps",c:"Snacks & cheese",t:"12 min",s:2,hor:["Bone support","Calcium","Vitamin K2"],tags:[["Batch make","pu"],["Bone support","co"],["Zero carbs","tl"]],why:"Parmesan is one of the highest calcium cheeses and contains meaningful vitamin K2 — the nutrient that directs calcium into bone rather than soft tissue. Virtually zero carbs. Make a batch and keep in an airtight container for up to 3 days.",ing:["100g parmesan, finely grated","Optional: cracked pepper, smoked paprika, or dried rosemary"],meth:"Preheat oven to 200°C. Line a tray with baking paper. Place small mounds (1 heaped tsp each) well apart, flatten slightly. Bake 6–8 min until golden and lacy. Cool completely before removing — they crisp as they cool.",mac:{f:"14g",p:"12g",c:"0g"}},
+  {n:"Cream cheese dip with capsicum sticks",c:"Snacks & cheese",t:"10 min",s:2,hor:["Bone support","Vitamin C","Adrenal support"],tags:[["Quick","tl"],["No cook","pu"]],why:"Cream cheese provides fat-soluble vitamins A and D. Capsicum contains more vitamin C per gram than citrus — important for adrenal support and collagen synthesis. Keeps in the fridge for 3 days.",ing:["150g cream cheese, softened","1 tbsp sour cream","1 clove garlic, minced","1 tbsp fresh chives or parsley","Salt, pepper","2 capsicums, cut into strips","Cherry tomatoes to serve"],meth:"Beat cream cheese with sour cream, garlic and herbs until smooth. Season well. Serve with capsicum strips and tomatoes. Keeps in fridge for 3 days.",mac:{f:"22g",p:"6g",c:"5g"}},
+  {n:"Mini bacon & cheese frittatas",c:"Snacks & cheese",t:"25 min",s:2,hor:["Metabolism","Bone support","Energy"],tags:[["Batch make","pu"],["Warm snack","am"]],why:"Make 12 on Sunday and you have snacks all week. Eggs and cheese together deliver calcium, choline, B12 and complete protein. They reheat in 60 seconds and are endlessly customisable.",ing:["6 eggs","4 rashers bacon, diced","80g cheddar, grated","3 tbsp cream","2 tbsp cream cheese","Salt, pepper","Optional: diced capsicum, fresh herbs"],meth:"Preheat oven 180°C. Grease a 12-hole muffin tin well. Fry bacon briefly. Whisk eggs, cream and cream cheese. Stir in bacon, most of the cheese and any extras. Fill muffin holes ¾ full. Top with remaining cheese. Bake 15–18 min until puffed and golden.",mac:{f:"28g",p:"22g",c:"1g"},sul:"Check bacon labels — use butcher bacon or sulphite-free brands where possible."},
+  {n:"Almond & macadamia fat bombs",c:"Snacks & cheese",t:"10 min + chill",s:2,hor:["Metabolism","Energy","Hormone balance"],tags:[["Prep ahead","pu"],["Keto snack","tl"]],why:"Macadamias are high in palmitoleic acid supporting insulin sensitivity — important when oestrogen decline affects blood sugar. Almond butter adds vitamin E. Coconut oil MCTs provide fast ketone energy, helpful for brain fog.",ing:["100g macadamias, blitzed","2 tbsp almond butter (100% almonds)","3 tbsp coconut oil, melted","1 tbsp cacao powder","Pinch sea salt","Stevia or monk fruit to taste"],meth:"Blitz macadamias to a rough crumb. Mix in all remaining ingredients. Roll into balls (approx 12). Refrigerate 30 min until firm. Store in fridge. Serving = 2 balls.",mac:{f:"24g",p:"3g",c:"2g"},sul:"Use plain 100% almond butter with no preservatives listed."},
+  {n:"Magnesium seed mix & cinnamon tonic",c:"Snacks & cheese",t:"5 min",s:2,hor:["Sleep","Bone support","Nervous system"],tags:[["Sleep support","pu"],["Bone support","am"]],why:"Pumpkin seeds are one of the richest dietary sources of magnesium — essential for sleep onset, muscle relaxation and bone density. The warm cinnamon tonic stabilises blood sugar overnight, reducing cortisol spikes that cause night waking.",ing:["SEED MIX: 30g pumpkin seeds, 20g sunflower seeds, pinch sea salt","TONIC: 200ml So Good almond or coconut milk, ¼ tsp cinnamon, pinch nutmeg, stevia to taste"],meth:"Toast seeds in a dry pan 3–4 min. Store in a jar. Warm milk gently (don't boil), whisk in cinnamon and nutmeg. Drink 30 min before bed.",mac:{f:"16g",p:"7g",c:"4g"}},
+  {n:"Cheese, egg & tomato plate",c:"Snacks & cheese",t:"5 min",s:2,hor:["Bone support","Hormone synthesis","Energy"],tags:[["No cook","pu"],["Quick","tl"]],why:"Aged hard cheese contains calcium and vitamin K2 — directing calcium into bones, not soft tissue. Hard-boiled eggs provide complete protein and choline for cognitive function. Cherry tomatoes add vitamin C and lycopene.",ing:["2 hard-boiled eggs, halved","60g aged cheddar or parmesan","Cherry tomatoes","Handful macadamias","Olive oil drizzle","Sea salt, cracked pepper"],meth:"Arrange on a plate or board. Season well. Drizzle with olive oil. No cooking needed.",mac:{f:"36g",p:"18g",c:"3g"}},
+  {n:"Chocolate protein shake",c:"Protein shakes",t:"3 min",s:1,hor:["Muscle mass","Bone & joint","Brain support"],tags:[["Quick","tl"],["Post-workout","pu"]],why:"Whey isolate is the gold standard for leucine — the amino acid that triggers muscle protein synthesis, critical for preserving muscle mass as oestrogen declines. Cacao adds magnesium and flavonoids. Coconut milk MCTs support mental clarity.",ing:["1.5 scoops whey isolate (chocolate or unflavoured)","250ml So Good coconut milk","1 tbsp cacao powder","1 tsp cinnamon","Pinch sea salt","3–4 ice cubes","Stevia if needed"],meth:"Blend all ingredients 30 seconds until smooth and frothy. Drink immediately for best texture.",mac:{f:"12g",p:"38g",c:"4g"}},
+  {n:"Vanilla almond breakfast shake",c:"Protein shakes",t:"3 min",s:1,hor:["Metabolism","Energy","Blood sugar balance"],tags:[["Quick","tl"],["Breakfast sub","am"]],why:"A protein-first breakfast stabilises cortisol and blood sugar from the moment you wake — particularly important in menopause when insulin sensitivity shifts. Works as a full breakfast on busy mornings without compromising ketosis.",ing:["1.5 scoops vanilla whey isolate","250ml So Good almond milk","1 tbsp almond butter (100% almonds)","½ tsp vanilla extract","¼ tsp cinnamon","3–4 ice cubes"],meth:"Blend all ingredients until smooth. For a thicker shake add more ice. Drink within 20 min of making.",mac:{f:"14g",p:"40g",c:"4g"},sul:"Unflavoured or naturally flavoured whey isolate is lowest risk for additives."},
+  {n:"Creamy coconut & cinnamon shake",c:"Protein shakes",t:"3 min",s:1,hor:["Sleep","Metabolism","Adrenal support"],tags:[["Quick","tl"],["Evening option","pu"]],why:"A gentler, lower-stimulant shake suited to evenings or rest days. Coconut milk adds MCTs and satiating fat. Cinnamon helps regulate blood sugar overnight. Whey taken in the evening supports overnight muscle repair.",ing:["1 scoop whey isolate (vanilla or unflavoured)","150ml So Good coconut milk","50ml water","½ tsp cinnamon","Pinch nutmeg","Stevia to taste","3 ice cubes"],meth:"Shake in a shaker bottle or blend briefly. Serve cold.",mac:{f:"10g",p:"26g",c:"3g"}},
+  {n:"Berry & almond power shake",c:"Protein shakes",t:"5 min",s:1,hor:["Oestrogen balance","Anti-inflammatory","Brain support"],tags:[["Antioxidant","tl"],["Brain support","pu"]],why:"Frozen blueberries and raspberries are low-carb berries packed with anthocyanins — antioxidants shown to support cognitive function and reduce inflammation. One of the few fruits that fits keto in small amounts.",ing:["1.5 scoops vanilla whey isolate","200ml So Good almond milk","60g frozen blueberries or raspberries","1 tbsp almond butter","3 ice cubes","Stevia if needed"],meth:"Blend all ingredients until smooth and thick. Frozen berries make this naturally cold and creamy without much ice.",mac:{f:"12g",p:"38g",c:"8g"}}
+];
+
+let cat="All", sel=null;
+
+function renderTabs(){
+  document.getElementById("tabs").innerHTML=CATS.map(c=>`<button class="tab${c===cat?" on":""}" onclick="setC('${c}')">${c}</button>`).join("");
+}
+
+function setC(c){cat=c;sel=null;renderTabs();render();}
+function pick(i){sel=sel===i?null:i;render();}
+
+function render(){
+  const show=cat==="All"?["Breakfast","Lunch","Dinner","Snacks & cheese","Protein shakes"]:[cat];
+  let h="";
+  show.forEach(sc=>{
+    const items=M.filter(m=>m.c===sc);
+    if(!items.length)return;
+    if(cat==="All")h+=`<p class="sec-label">${sc}</p>`;
+    h+=`<div class="grid">`;
+    items.forEach(m=>{
+      const i=M.indexOf(m),on=sel===i;
+      h+=`<div class="card${on?" sel":""}" onclick="pick(${i})">
+        <div class="card-name">${m.n}</div>
+        <div class="card-time">⏱ ${m.t} &nbsp;·&nbsp; Serves ${m.s}</div>
+        <div class="tags">${m.tags.map(t=>`<span class="tag ${t[1]}">${t[0]}</span>`).join("")}</div>
+      </div>`;
+    });
+    h+=`</div>`;
+    if(sel!==null){
+      const s=M[sel];
+      if(s&&s.c===sc){
+        h+=`<div class="detail">
+          <div class="det-name">${s.n}</div>
+          <div class="det-sub">${s.c} &nbsp;·&nbsp; ${s.t} &nbsp;·&nbsp; Serves ${s.s}</div>
+          <div class="det-why"><strong>Why this works:</strong> ${s.why}</div>
+          <div class="macros">
+            <div class="mac"><div class="mac-v">${s.mac.f}</div><div class="mac-l">Fat</div></div>
+            <div class="mac"><div class="mac-v">${s.mac.p}</div><div class="mac-l">Protein</div></div>
+            <div class="mac"><div class="mac-v">${s.mac.c}</div><div class="mac-l">Net carbs</div></div>
+          </div>
+          <div class="det-cols">
+            <div>
+              <div class="det-h">Ingredients</div>
+              <ul class="ing-list">${s.ing.map(i=>`<li>${i}</li>`).join("")}</ul>
+            </div>
+            <div>
+              <div class="det-h">Method</div>
+              <p class="method-txt">${s.meth}</p>
+              <div style="margin-top:.85rem">
+                <div class="det-h">Hormone targets</div>
+                <div class="tags">${s.hor.map(h=>`<span class="tag tl">${h}</span>`).join("")}</div>
+              </div>
+            </div>
+          </div>
+          ${s.sul?`<div class="sul-note"><span class="sul-icon">⚠️</span><span><strong>Sulphite note:</strong> ${s.sul}</span></div>`:""}
+        </div>`;
+      }
+    }
+  });
+  document.getElementById("body").innerHTML=h;
+}
+
+renderTabs();render();
+</script>
+</body>
+</html>
