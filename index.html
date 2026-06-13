@@ -4,223 +4,1214 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keto Hormone Meal Library</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Fuel Up — Eat Better, Feel Better</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #FAFAF8;
-    --surface: #FFFFFF;
-    --surface2: #F4F2EE;
-    --border: #E8E4DC;
-    --border2: #D4CFC5;
-    --text: #1A1A18;
-    --text2: #6B6860;
-    --text3: #9B9890;
-    --accent: #1D9E75;
-    --accent-light: #E1F5EE;
-    --accent-dark: #085041;
-    --amber: #FAEEDA;
-    --amber-text: #633806;
-    --purple: #EEEDFE;
-    --purple-text: #3C3489;
-    --coral: #FAECE7;
-    --coral-text: #712B13;
-    --blue: #E6F1FB;
-    --blue-text: #0C447C;
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --card: #21253a;
+    --border: #2e3350;
+    --accent: #f5a623;
+    --accent2: #4ecdc4;
+    --text: #e8eaf0;
+    --muted: #8892aa;
+    --green: #56c27e;
+    --red: #e05c5c;
     --radius: 12px;
-    --radius-sm: 8px;
+    --font-display: 'Barlow Condensed', sans-serif;
+    --font-body: 'Inter', sans-serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-
-  header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1.25rem 1.5rem; position: sticky; top: 0; z-index: 100; }
-  .header-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-  .logo { display: flex; align-items: center; gap: 10px; }
-  .logo-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); }
-  .logo-text { font-size: 15px; font-weight: 600; color: var(--text); }
-  .logo-sub { font-size: 12px; color: var(--text2); margin-top: 1px; }
-  .header-badges { display: flex; gap: 6px; flex-wrap: wrap; }
-  .hbadge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--surface2); color: var(--text2); border: 1px solid var(--border); }
-
-  main { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
-
-  .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .tab { padding: 7px 15px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); font-size: 13px; cursor: pointer; color: var(--text2); font-family: inherit; transition: all 0.15s; }
-  .tab:hover { border-color: var(--border2); color: var(--text); }
-  .tab.on { background: var(--text); color: #fff; border-color: var(--text); }
-
-  .sec-label { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text3); margin: 1.5rem 0 .75rem; }
-
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 10px; margin-bottom: .75rem; }
-
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s; }
-  .card:hover { border-color: var(--border2); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-  .card.sel { border: 2px solid var(--accent); }
-  .card-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 4px; line-height: 1.4; }
-  .card-time { font-size: 11px; color: var(--text3); margin-bottom: 8px; }
-
-  .tags { display: flex; flex-wrap: wrap; gap: 4px; }
-  .tag { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
-  .tl { background: var(--accent-light); color: var(--accent-dark); }
-  .pu { background: var(--purple); color: var(--purple-text); }
-  .am { background: var(--amber); color: var(--amber-text); }
-  .co { background: var(--coral); color: var(--coral-text); }
-  .bl { background: var(--blue); color: var(--blue-text); }
-
-  .detail { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.25rem; }
-  .det-name { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
-  .det-sub { font-size: 12px; color: var(--text2); margin-bottom: .85rem; }
-  .det-why { font-size: 13px; color: var(--text2); line-height: 1.7; margin-bottom: 1rem; padding: 12px 14px; background: var(--surface2); border-radius: var(--radius-sm); border-left: 3px solid var(--accent); }
-  .det-why strong { color: var(--text); font-weight: 500; }
-
-  .macros { display: flex; gap: 8px; margin-bottom: 1.1rem; }
-  .mac { flex: 1; background: var(--surface2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
-  .mac-v { font-size: 16px; font-weight: 600; color: var(--text); }
-  .mac-l { font-size: 10px; color: var(--text3); margin-top: 2px; text-transform: uppercase; letter-spacing: .05em; }
-
-  .det-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-  .det-h { font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
-  .ing-list { list-style: none; }
-  .ing-list li { font-size: 12px; color: var(--text); padding: 4px 0; border-bottom: 1px solid var(--border); line-height: 1.45; }
-  .ing-list li:last-child { border: none; }
-  .method-txt { font-size: 12px; color: var(--text2); line-height: 1.7; }
-
-  .sul-note { font-size: 11px; color: var(--amber-text); background: var(--amber); border-radius: var(--radius-sm); padding: 8px 12px; margin-top: 1rem; display: flex; gap: 6px; align-items: flex-start; line-height: 1.5; }
-  .sul-icon { flex-shrink: 0; margin-top: 1px; }
-
-  .more-btn { margin-top: 1rem; padding: 8px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border2); background: var(--surface); font-size: 12px; cursor: pointer; color: var(--text); font-family: inherit; transition: background 0.15s; }
-  .more-btn:hover { background: var(--surface2); }
-
-  .empty { padding: 3rem; text-align: center; color: var(--text3); font-size: 14px; }
-
-  footer { text-align: center; padding: 2rem 1rem; font-size: 11px; color: var(--text3); border-top: 1px solid var(--border); margin-top: 2rem; }
-
-  @media (max-width: 600px) {
-    .det-cols { grid-template-columns: 1fr; }
-    .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
-    header { padding: 1rem; }
-    .logo-sub { display: none; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); min-height: 100vh; }
+  header { background: linear-gradient(135deg, #1a1d27 0%, #12152a 100%); border-bottom: 2px solid var(--accent); padding: 20px 16px 16px; text-align: center; }
+  header h1 { font-family: var(--font-display); font-size: clamp(28px, 6vw, 48px); letter-spacing: 1px; color: var(--accent); text-transform: uppercase; line-height: 1; }
+  header p { color: var(--muted); font-size: 14px; margin-top: 6px; }
+  .tabs { display: flex; overflow-x: auto; background: var(--surface); border-bottom: 1px solid var(--border); gap: 2px; padding: 0 8px; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab-btn { flex-shrink: 0; padding: 12px 14px; font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--muted); background: none; border: none; border-bottom: 3px solid transparent; cursor: pointer; white-space: nowrap; transition: color .2s, border-color .2s; }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab-panel { display: none; padding: 20px 16px 60px; max-width: 900px; margin: 0 auto; }
+  .tab-panel.active { display: block; }
+  .section-intro { background: var(--surface); border-left: 4px solid var(--accent2); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 20px; font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .section-intro strong { color: var(--text); }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .meal-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: border-color .2s, transform .15s; }
+  .meal-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .meal-card.featured { border-color: var(--accent2); grid-column: 1 / -1; }
+  .card-header { padding: 14px 16px 10px; }
+  .card-emoji { font-size: 28px; margin-bottom: 6px; display: block; }
+  .card-title { font-family: var(--font-display); font-size: 20px; letter-spacing: 0.5px; color: var(--text); line-height: 1.2; }
+  .card-subtitle { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .macro-bar { display: flex; gap: 6px; padding: 8px 16px; background: rgba(0,0,0,0.2); flex-wrap: wrap; }
+  .macro { display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 44px; }
+  .macro-val { font-family: var(--font-display); font-size: 18px; font-weight: 700; line-height: 1; }
+  .macro-lbl { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+  .kcal .macro-val { color: var(--accent); }
+  .prot .macro-val { color: var(--green); }
+  .carb .macro-val { color: var(--accent2); }
+  .fat .macro-val { color: #b48be0; }
+  .fib .macro-val { color: #f0a5c0; }
+  .card-toggle { width: 100%; background: none; border: none; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; font-family: var(--font-body); padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: color .2s; }
+  .card-toggle:hover { color: var(--accent); }
+  .card-detail { display: none; padding: 14px 16px; border-top: 1px solid var(--border); font-size: 13px; line-height: 1.6; }
+  .card-detail.open { display: block; }
+  .detail-section { margin-bottom: 12px; }
+  .detail-section h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 6px; }
+  .detail-section ul { list-style: none; padding: 0; }
+  .detail-section ul li { padding: 3px 0; color: var(--muted); display: flex; gap: 8px; }
+  .detail-section ul li::before { content: "•"; color: var(--accent2); flex-shrink: 0; }
+  .steps-list { counter-reset: steps; list-style: none; padding: 0; }
+  .steps-list li { counter-increment: steps; padding: 5px 0 5px 28px; position: relative; color: var(--muted); border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .steps-list li:last-child { border-bottom: none; }
+  .steps-list li::before { content: counter(steps); position: absolute; left: 0; top: 5px; width: 20px; height: 20px; background: var(--accent); color: #000; border-radius: 50%; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .tip-box { background: rgba(245,166,35,0.08); border: 1px solid rgba(245,166,35,0.25); border-radius: 8px; padding: 10px 12px; font-size: 12px; color: var(--accent); margin-top: 10px; }
+  .tip-box::before { content: "💡 "; }
+  /* Sub tabs */
+  .sub-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+  .sub-tab-btn { padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid var(--border); background: var(--surface); color: var(--muted); cursor: pointer; transition: all .2s; }
+  .sub-tab-btn:hover { color: var(--text); border-color: var(--accent); }
+  .sub-tab-btn.active { background: var(--accent); color: #000; border-color: var(--accent); }
+  .sub-panel { display: none; }
+  .sub-panel.active { display: block; }
+  /* Salad base */
+  .salad-base-card { background: var(--card); border: 2px solid var(--accent2); border-radius: var(--radius); padding: 20px; margin-bottom: 20px; }
+  .salad-base-card h3 { font-family: var(--font-display); font-size: 22px; color: var(--accent2); margin-bottom: 8px; }
+  .salad-base-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
+  .base-ingredients { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .base-tag { background: rgba(78,205,196,0.12); border: 1px solid rgba(78,205,196,0.3); border-radius: 20px; padding: 4px 12px; font-size: 12px; color: var(--accent2); }
+  .base-macro-row { display: flex; gap: 10px; flex-wrap: wrap; background: rgba(0,0,0,0.2); border-radius: 8px; padding: 10px; }
+  .salad-section-label { font-family: var(--font-display); font-size: 18px; color: var(--muted); margin: 20px 0 10px; text-transform: uppercase; letter-spacing: 1px; }
+  /* Grab & Go list cards */
+  .grab-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; }
+  .grab-card h3 { font-family: var(--font-display); font-size: 20px; color: var(--accent); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .grab-card .grab-macros { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0; }
+  .grab-badge { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 12px; }
+  .grab-badge.kcal { background: rgba(245,166,35,0.15); color: var(--accent); }
+  .grab-badge.prot { background: rgba(86,194,126,0.15); color: var(--green); }
+  .grab-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 6px; }
+  .grab-card ul { list-style: none; padding: 0; }
+  .grab-card ul li { font-size: 12px; color: var(--muted); padding: 3px 0; display: flex; gap: 6px; }
+  .grab-card ul li::before { content: "→"; color: var(--accent2); }
+  /* Staples */
+  .staples-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+  .staple-col { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+  .staple-col h3 { font-family: var(--font-display); font-size: 18px; color: var(--accent); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .staple-col ul { list-style: none; }
+  .staple-col ul li { padding: 5px 0; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--border); display: flex; gap: 8px; align-items: flex-start; }
+  .staple-col ul li:last-child { border-bottom: none; }
+  .staple-col ul li::before { content: "✓"; color: var(--green); flex-shrink: 0; }
+  .staple-col ul li span { color: var(--text); font-weight: 600; display: block; }
+  .staple-col ul li small { color: var(--muted); font-size: 11px; }
+  /* Build Your Day */
+  .day-builder { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 20px; }
+  .day-builder h3 { font-family: var(--font-display); font-size: 22px; color: var(--accent); margin-bottom: 4px; }
+  .calorie-target { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+  .target-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; text-align: center; flex: 1; min-width: 120px; }
+  .target-box .big { font-family: var(--font-display); font-size: 32px; color: var(--accent); }
+  .target-box p { font-size: 12px; color: var(--muted); }
+  .meal-timeline { list-style: none; }
+  .meal-timeline li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .meal-timeline li:last-child { border-bottom: none; }
+  .timeline-icon { font-size: 24px; flex-shrink: 0; width: 36px; text-align: center; }
+  .timeline-info { flex: 1; }
+  .timeline-info strong { color: var(--text); font-size: 14px; display: block; }
+  .timeline-info span { color: var(--muted); font-size: 12px; }
+  .timeline-kcal { font-family: var(--font-display); font-size: 20px; color: var(--accent); flex-shrink: 0; }
+  /* TM31 Cheat Sheet */
+  .cheat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .cheat-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+  .cheat-card h3 { font-family: var(--font-display); font-size: 18px; color: var(--accent2); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .cheat-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
+  .speed-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+  .speed-table th { color: var(--accent); font-size: 11px; text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--border); }
+  .speed-table td { padding: 5px 6px; color: var(--muted); border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+  .speed-table td:first-child { color: var(--text); font-weight: 600; white-space: nowrap; }
+  /* Sunday Prep */
+  .prep-steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-top: 16px; }
+  .prep-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+  .prep-card h3 { font-family: var(--font-display); font-size: 18px; color: var(--accent); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .prep-card ul { list-style: none; }
+  .prep-card ul li { font-size: 13px; color: var(--muted); padding: 4px 0; display: flex; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .prep-card ul li:last-child { border-bottom: none; }
+  .prep-card ul li::before { content: "→"; color: var(--accent2); }
+  .big-tip { background: linear-gradient(135deg, rgba(78,205,196,0.1), rgba(245,166,35,0.05)); border: 1px solid var(--accent2); border-radius: var(--radius); padding: 16px; margin-bottom: 20px; font-size: 14px; color: var(--text); line-height: 1.7; }
+  .page-title { font-family: var(--font-display); font-size: 26px; color: var(--text); margin-bottom: 6px; }
+  .macro-legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; padding: 10px 14px; background: var(--surface); border-radius: 8px; font-size: 12px; }
+  .macro-legend span { display: flex; align-items: center; gap: 5px; color: var(--muted); }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .section-divider { font-family: var(--font-display); font-size: 16px; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; margin: 24px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  @media (max-width: 480px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .staples-grid { grid-template-columns: 1fr; }
+    .cheat-grid { grid-template-columns: 1fr; }
+    .prep-steps { grid-template-columns: 1fr; }
+    .meal-card.featured { grid-column: 1; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="logo">
-      <div class="logo-dot"></div>
-      <div>
-        <div class="logo-text">Keto Hormone Meal Library</div>
-        <div class="logo-sub">Menopausal support · Sulphite-aware · 23 recipes</div>
-      </div>
-    </div>
-    <div class="header-badges">
-      <span class="hbadge">Weight &amp; metabolism</span>
-      <span class="hbadge">Mood &amp; brain</span>
-      <span class="hbadge">Sleep &amp; energy</span>
-      <span class="hbadge">Bone support</span>
-    </div>
-  </div>
+  <h1>⚡ Fuel Up</h1>
+  <p>Eat better. Feel better. Keep it simple.</p>
 </header>
 
-<main>
-  <div class="tabs" id="tabs"></div>
-  <div id="body"></div>
-</main>
+<div class="tabs" role="tablist">
+  <button class="tab-btn active" onclick="switchTab('lunches',this)">🥗 Easy Lunches</button>
+  <button class="tab-btn" onclick="switchTab('snacks',this)">🍎 Snacks</button>
+  <button class="tab-btn" onclick="switchTab('tm31',this)">🌀 TM31 Meals</button>
+  <button class="tab-btn" onclick="switchTab('packet',this)">🍲 Packet Meals</button>
+  <button class="tab-btn" onclick="switchTab('staples',this)">🛒 Staples List</button>
+  <button class="tab-btn" onclick="switchTab('prep',this)">📅 Sunday Prep</button>
+  <button class="tab-btn" onclick="switchTab('day',this)">📊 Build Your Day</button>
+  <button class="tab-btn" onclick="switchTab('cheat',this)">📘 TM31 Guide</button>
+</div>
 
-<footer>Built for personal use · Keep sulphite notes in mind when shopping · Always check labels</footer>
+<!-- ===================== LUNCHES ===================== -->
+<div id="tab-lunches" class="tab-panel active">
+  <p class="page-title">Easy Tradie Lunches</p>
+  <div class="section-intro">
+    <strong>The goal:</strong> High protein, easy to prep the night before, simple to reheat on site or eat cold. These keep you full, won't blow your calorie budget, and take under 10 minutes to throw together.
+  </div>
+  <div class="macro-legend">
+    <span><span class="dot" style="background:var(--accent)"></span>Calories</span>
+    <span><span class="dot" style="background:var(--green)"></span>Protein</span>
+    <span><span class="dot" style="background:var(--accent2)"></span>Carbs</span>
+    <span><span class="dot" style="background:#b48be0"></span>Fat</span>
+    <span><span class="dot" style="background:#f0a5c0"></span>Fibre</span>
+  </div>
+
+  <!-- SALAD BASE -->
+  <div class="salad-base-card">
+    <h3>🥗 The Tradie Salad Base</h3>
+    <p>Build this base on Sunday — it takes 10 minutes and keeps 4 days in the fridge. Every day, grab a portion, pick your protein from the cards below, and drizzle on a sauce. Done in 2 minutes flat.</p>
+    <div class="base-ingredients">
+      <span class="base-tag">🥬 Cos or iceberg lettuce</span>
+      <span class="base-tag">🌿 Baby spinach</span>
+      <span class="base-tag">🫑 Capsicum (red or green)</span>
+      <span class="base-tag">🥒 Cucumber</span>
+      <span class="base-tag">🧅 Shallots / green onion</span>
+      <span class="base-tag">🥬 Red cabbage (shredded)</span>
+      <span class="base-tag">🥕 Carrot (grated)</span>
+      <span class="base-tag">🍅 Cherry tomatoes</span>
+      <span class="base-tag">🥬 Celery (sliced)</span>
+      <span class="base-tag">🌻 Sunflower seeds (1 tbsp)</span>
+    </div>
+    <p style="font-size:12px;"><strong style="color:var(--accent2)">Base only macros (approx 2 big handfuls):</strong> ~80 kcal | 4g protein | 12g carbs | 3g fat | 5g fibre</p>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;"><strong style="color:var(--text)">How to build it:</strong> Use about ¼ of your batch per day. Add your protein card below + a sauce. The full meal macros are shown on each protein card and already include the base.</p>
+  </div>
+
+  <div class="section-divider">Choose Your Protein</div>
+  <div class="card-grid" id="salad-protein-grid"></div>
+
+  <div class="section-divider">Other Lunch Ideas</div>
+  <div class="card-grid" id="lunch-grid"></div>
+</div>
+
+<!-- ===================== SNACKS ===================== -->
+<div id="tab-snacks" class="tab-panel">
+  <p class="page-title">Snacks</p>
+  <div class="section-intro">
+    <strong>Snack smart:</strong> These keep hunger at bay between meals without blowing your daily calories. Aim for 150–250 kcal per snack with as much protein as possible to stay full.
+  </div>
+  <div class="sub-tabs">
+    <button class="sub-tab-btn active" onclick="switchSubTab('snacks','make',this)">🍳 Make It</button>
+    <button class="sub-tab-btn" onclick="switchSubTab('snacks','grab',this)">🛍️ Grab & Go</button>
+  </div>
+  <div id="snacks-make" class="sub-panel active">
+    <div class="card-grid" id="snack-grid"></div>
+  </div>
+  <div id="snacks-grab" class="sub-panel">
+    <div class="section-intro">
+      <strong>No prep required.</strong> These are all things you can buy ready to eat — at Woolies, Coles, a servo, or a sushi train. Keep a few of these in your ute, toolbox, or work bag so you're never caught hungry with no good options nearby.
+    </div>
+    <div id="grab-grid"></div>
+  </div>
+</div>
+
+<!-- ===================== TM31 ===================== -->
+<div id="tab-tm31" class="tab-panel">
+  <p class="page-title">Thermomix TM31 Meals</p>
+  <div class="section-intro">
+    <strong>New to the TM31?</strong> These recipes are written for absolute beginners — every step is spelled out. All meals are <strong>350–500 kcal</strong>, hearty, and filling. No whole olives. Tomatoes used only in sauces. Check the <strong>TM31 Guide tab</strong> first if you're unsure about speeds or temperatures.
+  </div>
+  <div class="card-grid" id="tm31-grid"></div>
+</div>
+
+<!-- ===================== PACKET MEALS ===================== -->
+<div id="tab-packet" class="tab-panel">
+  <p class="page-title">Easy Packet & Jar Meals</p>
+  <div class="section-intro">
+    <strong>No shame in a packet sauce</strong> — these are real meals, fast and tasty. Pick a lean protein, grab a sauce from the supermarket, add some veg. Done.
+  </div>
+  <div class="card-grid" id="packet-grid"></div>
+</div>
+
+<!-- ===================== STAPLES ===================== -->
+<div id="tab-staples" class="tab-panel">
+  <p class="page-title">Staples Shopping List</p>
+  <div class="section-intro">
+    Keep these in your fridge, freezer, and pantry and you'll <strong>always</strong> be able to throw a meal together — even on a lazy day with nothing planned.
+  </div>
+  <div class="staples-grid">
+    <div class="staple-col">
+      <h3>🧊 Freezer</h3>
+      <ul>
+        <li><div><span>Frozen chicken breast</span><small>Defrost overnight in fridge</small></div></li>
+        <li><div><span>Frozen fish fillets</span><small>Basa, barramundi, or salmon — TM31 Varoma or pan fry</small></div></li>
+        <li><div><span>Frozen stir-fry veg</span><small>No prep needed, just tip in</small></div></li>
+        <li><div><span>Frozen edamame</span><small>High protein snack, microwave 3 mins</small></div></li>
+        <li><div><span>Frozen peas & corn</span><small>Add to anything</small></div></li>
+        <li><div><span>Lean beef mince</span><small>500g bags, defrost night before</small></div></li>
+        <li><div><span>Lean pork mince</span><small>For San Choy Bow and stir-fries</small></div></li>
+        <li><div><span>Frozen prawns</span><small>Defrost fast in cold water</small></div></li>
+        <li><div><span>Frozen bok choy</span><small>Or buy fresh — goes with Asian dishes</small></div></li>
+      </ul>
+    </div>
+    <div class="staple-col">
+      <h3>🥶 Fridge</h3>
+      <ul>
+        <li><div><span>Eggs (12 pack)</span><small>Boil, fry, scramble — always useful</small></div></li>
+        <li><div><span>Greek yoghurt (plain)</span><small>High protein, great with fruit, or as sour cream swap</small></div></li>
+        <li><div><span>Cottage cheese</span><small>High protein, low cal — try with crackers</small></div></li>
+        <li><div><span>Lite cheese slices</span><small>Add to wraps and sandwiches</small></div></li>
+        <li><div><span>Low-fat milk</span><small>For protein shakes and coffee</small></div></li>
+        <li><div><span>Deli turkey or chicken breast</span><small>Ready to eat, great in wraps or salads</small></div></li>
+        <li><div><span>Baby spinach / mixed leaves</span><small>Salad base always ready</small></div></li>
+        <li><div><span>Cos or iceberg lettuce</span><small>Salad base + San Choy Bow cups</small></div></li>
+        <li><div><span>Broccoli</span><small>Filling, high fibre, low cal</small></div></li>
+        <li><div><span>Carrots, celery, capsicum, cucumber</span><small>Salad base + snacking veg</small></div></li>
+        <li><div><span>Shallots / green onion</span><small>Salad base and flavouring</small></div></li>
+        <li><div><span>Red cabbage (small)</span><small>Shred for salad base</small></div></li>
+        <li><div><span>Button mushrooms</span><small>Stroganoff, stir-fry, omelettes</small></div></li>
+        <li><div><span>Leek (1–2)</span><small>TM31 risotto and other meals</small></div></li>
+        <li><div><span>Fresh ginger</span><small>Freeze it and grate from frozen — lasts months</small></div></li>
+      </ul>
+    </div>
+    <div class="staple-col">
+      <h3>🥫 Pantry</h3>
+      <ul>
+        <li><div><span>Canned tuna in springwater</span><small>95g cans — quickest protein ever</small></div></li>
+        <li><div><span>Canned chickpeas / lentils</span><small>Add to anything for fibre + protein</small></div></li>
+        <li><div><span>Canned kidney beans</span><small>For chilli and stews</small></div></li>
+        <li><div><span>Canned black beans</span><small>Mexican dishes — tacos, pulled chicken</small></div></li>
+        <li><div><span>Canned diced tomatoes</span><small>Base for sauces and curries</small></div></li>
+        <li><div><span>Canned water chestnuts</span><small>San Choy Bow — adds crunch</small></div></li>
+        <li><div><span>Light coconut milk (cans)</span><small>TM31 curries — use light, not full-fat</small></div></li>
+        <li><div><span>Campbell's condensed mushroom soup</span><small>Tuna pasta bake sauce</small></div></li>
+        <li><div><span>Brown rice (microwave cups)</span><small>90 seconds done — keep 8–10 cups</small></div></li>
+        <li><div><span>Arborio rice</span><small>TM31 risotto — must be arborio, not regular rice</small></div></li>
+        <li><div><span>Rice noodles (thin)</span><small>Asian noodle dishes — soak in boiling water</small></div></li>
+        <li><div><span>Rolled oats</span><small>Overnight oats, porridge — cheap and filling</small></div></li>
+        <li><div><span>Whey protein powder</span><small>Vanilla or choc — for shakes</small></div></li>
+        <li><div><span>Olive oil spray</span><small>Cook with almost zero calories</small></div></li>
+        <li><div><span>Reduced-salt soy sauce</span><small>Flavours everything fast</small></div></li>
+        <li><div><span>Oyster sauce</span><small>San Choy Bow and stir-fries</small></div></li>
+        <li><div><span>Hoisin sauce</span><small>Asian dishes, dipping sauce</small></div></li>
+        <li><div><span>Honey soy marinade</span><small>Maggi or Fountain — baked chicken thighs</small></div></li>
+        <li><div><span>Chicken or veg stock cubes</span><small>Base for all TM31 meals</small></div></li>
+        <li><div><span>Beef stock cubes</span><small>Bolognese, stroganoff, stews</small></div></li>
+        <li><div><span>Green curry paste</span><small>Maesri or Valcom — Thai green curry</small></div></li>
+        <li><div><span>Mixed herbs, cumin, paprika</span><small>Add flavour without calories</small></div></li>
+        <li><div><span>Smoked paprika</span><small>Chilli, Mexican dishes — great flavour</small></div></li>
+        <li><div><span>Wholegrain crackers (Ryvita)</span><small>With cottage cheese or tuna</small></div></li>
+        <li><div><span>Rice cakes</span><small>Low cal base for snacks</small></div></li>
+        <li><div><span>Lime juice (bottled)</span><small>Mexican dishes — squeeze over everything</small></div></li>
+        <li><div><span>Sunflower seeds</span><small>Salad base topping — healthy fat</small></div></li>
+      </ul>
+    </div>
+    <div class="staple-col">
+      <h3>💡 Grab & Go Extras</h3>
+      <ul>
+        <li><div><span>Protein bars (≤200 kcal)</span><small>Quest, Musashi, or Macro Mike — read the label</small></div></li>
+        <li><div><span>Almonds (portioned to 20g)</span><small>Pre-bag into zip-locks so you don't overeat</small></div></li>
+        <li><div><span>Babybel cheese</span><small>6g protein, ~70 kcal each — no refrigeration all day</small></div></li>
+        <li><div><span>Tuna snack packs</span><small>Sirena flavoured — no can opener needed</small></div></li>
+        <li><div><span>Pre-made boiled eggs</span><small>Batch boil 6–8 on Sunday</small></div></li>
+        <li><div><span>Low-cal protein shakes</span><small>Nippy's or Masters Protein Milk — servo grab</small></div></li>
+        <li><div><span>Chobani Flip yoghurts</span><small>Portioned, no spoon needed</small></div></li>
+        <li><div><span>Beef jerky (small packs)</span><small>Jack Link's or Primo — watch sodium</small></div></li>
+        <li><div><span>Overnight oats (pre-made)</span><small>Make Sunday night, grab from fridge</small></div></li>
+        <li><div><span>Up&Go protein drinks</span><small>200 kcal grab-and-go breakfast</small></div></li>
+      </ul>
+    </div>
+    <div class="staple-col">
+      <h3>🍶 Sauces for Salads</h3>
+      <ul>
+        <li><div><span>Balsamic dressing (light)</span><small>Ken's or Paul Newman's Light — low cal</small></div></li>
+        <li><div><span>Lemon tahini (small bottle)</span><small>Or make: tahini + lemon + water</small></div></li>
+        <li><div><span>Sweet chilli sauce</span><small>Low fat, great flavour hit</small></div></li>
+        <li><div><span>Soy + sesame dressing</span><small>Asian salad flavour</small></div></li>
+        <li><div><span>Light Caesar dressing</span><small>Paul Newman's Light is best</small></div></li>
+        <li><div><span>Honey mustard (light)</span><small>Squeezable bottle, easy to portion</small></div></li>
+        <li><div><span>Greek-style dressing</span><small>Olive oil + lemon + oregano — make in a jar</small></div></li>
+        <li><div><span>Sriracha or hot sauce</span><small>Zero calories, massive flavour</small></div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SUNDAY PREP ===================== -->
+<div id="tab-prep" class="tab-panel">
+  <p class="page-title">Sunday Batch Prep</p>
+  <div class="big-tip">
+    🏆 <strong>The #1 habit that makes everything easier:</strong> Spend 60–90 minutes on Sunday getting ahead. You don't need to cook everything — just prep the basics so weekday decisions are already made for you. You start work at 6am — this is the only way to make sure you eat properly all week.
+  </div>
+  <div class="prep-steps">
+    <div class="prep-card">
+      <h3>🍳 Step 1 — Boil Eggs</h3>
+      <ul>
+        <li>Put 6–8 eggs in a pot, cover with cold water</li>
+        <li>Bring to boil, then turn to medium for 9 minutes</li>
+        <li>Run under cold water, peel, store in a container in the fridge</li>
+        <li>Lasts 5 days — grab one any time you're hungry</li>
+      </ul>
+    </div>
+    <div class="prep-card">
+      <h3>🍗 Step 2 — Cook Chicken</h3>
+      <ul>
+        <li>Put 500g–1kg chicken breast in a baking tray</li>
+        <li>Spray with olive oil, add mixed herbs and a pinch of salt</li>
+        <li>Bake at 200°C for 22–25 minutes</li>
+        <li>Slice and store — use in salads, wraps, or with rice all week</li>
+        <li>Lasts 4 days in the fridge</li>
+      </ul>
+    </div>
+    <div class="prep-card">
+      <h3>🥗 Step 3 — Build the Salad Base</h3>
+      <ul>
+        <li>Shred ¼ red cabbage, grate 2 carrots</li>
+        <li>Slice capsicum, cucumber, celery, shallots</li>
+        <li>Wash and dry spinach and lettuce</li>
+        <li>Halve cherry tomatoes</li>
+        <li>Mix everything in a big container — grab a portion each day</li>
+        <li>Keeps 4 days. Add dressing only when eating</li>
+      </ul>
+    </div>
+    <div class="prep-card">
+      <h3>🫙 Step 4 — Make Overnight Oats</h3>
+      <ul>
+        <li>Get 5 small jars or containers</li>
+        <li>Add 60g oats, 200ml low-fat milk, 1 scoop protein powder to each</li>
+        <li>Stir, put lid on, fridge overnight</li>
+        <li>In the morning at 5:30am — grab a jar and go. Zero prep.</li>
+        <li>Add berries or a banana in the morning if you want</li>
+      </ul>
+    </div>
+    <div class="prep-card">
+      <h3>🍲 Step 5 — One Big Batch Meal</h3>
+      <ul>
+        <li>Make a TM31 meal or a big pot of chilli, curry, or bolognese</li>
+        <li>Divide into 4–5 containers for lunches or dinners</li>
+        <li>Label with the day so you eat the oldest first</li>
+        <li>Freeze 2 if you won't eat them all by Wednesday</li>
+      </ul>
+    </div>
+    <div class="prep-card">
+      <h3>🥤 Step 6 — Portion Snacks</h3>
+      <ul>
+        <li>Pre-bag almonds into small zip-lock bags (20g each)</li>
+        <li>Put Greek yoghurt cups in the front of the fridge</li>
+        <li>Line up your protein bars and Babybels so they're easy to grab</li>
+        <li>Pack your lunch bag the night before — not the morning</li>
+        <li>If it's easy to grab, you'll grab it instead of junk</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tip-box" style="margin-top:20px; font-size:14px;">
+    Set a Sunday alarm for 3pm — call it "Kitchen Hour". Even just doing steps 1, 2 and 4 is enough to make your whole week easier. You start work at 6am — getting ahead on Sunday is how you win.
+  </div>
+</div>
+
+<!-- ===================== BUILD YOUR DAY ===================== -->
+<div id="tab-day" class="tab-panel">
+  <p class="page-title">Build Your Day</p>
+  <div class="section-intro">
+    You don't need to count every calorie obsessively — but having a rough daily target and knowing roughly what you're eating is the difference between losing weight and not losing weight.
+  </div>
+  <div class="day-builder">
+    <h3>Your Daily Calorie Target</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:4px;">For a large man aiming to lose weight steadily (0.5–1kg per week)</p>
+    <div class="calorie-target">
+      <div class="target-box">
+        <div class="big">1,800</div>
+        <p>kcal/day<br><strong style="color:var(--text)">Faster loss</strong><br>~1kg/week</p>
+      </div>
+      <div class="target-box">
+        <div class="big">2,000</div>
+        <p>kcal/day<br><strong style="color:var(--text)">Steady loss</strong><br>~0.7kg/week ✅</p>
+      </div>
+      <div class="target-box">
+        <div class="big">2,200</div>
+        <p>kcal/day<br><strong style="color:var(--text)">Gentle loss</strong><br>~0.5kg/week</p>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);line-height:1.7;">
+      👉 <strong style="color:var(--text)">Start at 2,000 kcal/day.</strong> If you're losing weight after 2–3 weeks, stick with it. If not, drop to 1,800. These are guides — not rules carved in stone.
+    </p>
+  </div>
+
+  <div class="day-builder">
+    <h3>Protein Goal</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:4px;line-height:1.7;">
+      Aim for <strong style="color:var(--green)">150–180g of protein per day.</strong> This sounds like a lot but it keeps you full, stops you losing muscle while you lose fat, and it's easier than you think when you eat the right foods.
+    </p>
+  </div>
+
+  <div class="day-builder">
+    <h3>Example Tradie Day — 2,000 kcal</h3>
+    <ul class="meal-timeline">
+      <li>
+        <div class="timeline-icon">🌅</div>
+        <div class="timeline-info">
+          <strong>Breakfast — 5:30am (grab & go — no cooking)</strong>
+          <span>Overnight oats from the fridge (prepped Sunday) + a coffee. Or an Up&Go protein drink if you're really rushed. Don't skip it — you'll be ravenous by 8am.</span>
+        </div>
+        <div class="timeline-kcal">~400</div>
+      </li>
+      <li>
+        <div class="timeline-icon">🕤</div>
+        <div class="timeline-info">
+          <strong>Morning Snack — 9:30am (on site)</strong>
+          <span>2 boiled eggs + a piece of fruit, Greek yoghurt, protein bar, or Babybel + almonds. Something prepped or bought — ready to grab from your bag.</span>
+        </div>
+        <div class="timeline-kcal">~200</div>
+      </li>
+      <li>
+        <div class="timeline-icon">🌤️</div>
+        <div class="timeline-info">
+          <strong>Lunch — 1:00pm</strong>
+          <span>Tradie salad base + a protein, a wrap, rice bowl, or whatever you prepped Sunday. Eat something real — this is the meal that stops you bingeing at dinner.</span>
+        </div>
+        <div class="timeline-kcal">~500</div>
+      </li>
+      <li>
+        <div class="timeline-icon">🕒</div>
+        <div class="timeline-info">
+          <strong>Afternoon Snack — 3:30pm</strong>
+          <span>Protein bar, handful of almonds + Babybel, cottage cheese + crackers, or tuna snack pack.</span>
+        </div>
+        <div class="timeline-kcal">~200</div>
+      </li>
+      <li>
+        <div class="timeline-icon">🌙</div>
+        <div class="timeline-info">
+          <strong>Dinner — 6:30pm</strong>
+          <span>TM31 meal, a packet sauce dinner, or baked chicken with rice and veg. A proper cooked meal — this is what the TM31 and packet meals sections are for.</span>
+        </div>
+        <div class="timeline-kcal">~500</div>
+      </li>
+      <li>
+        <div class="timeline-icon">🍫</div>
+        <div class="timeline-info">
+          <strong>Optional Night Snack</strong>
+          <span>Protein shake, Greek yoghurt with berries, or just skip it if you're not hungry.</span>
+        </div>
+        <div class="timeline-kcal">~150</div>
+      </li>
+    </ul>
+    <div style="background:rgba(86,194,126,0.1);border:1px solid var(--green);border-radius:8px;padding:12px;margin-top:14px;font-size:13px;color:var(--green);">
+      Total: ~1,950 kcal | ~150–160g protein
+    </div>
+  </div>
+
+  <div class="day-builder">
+    <h3>🙋 Quick Tips That Actually Work</h3>
+    <ul style="list-style:none;padding:0;">
+      <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted);display:flex;gap:10px;">
+        <span style="color:var(--accent)">💧</span> Drink a glass of water <strong style="color:var(--text)">before every meal</strong> — it fills you up and you'll eat less naturally.
+      </li>
+      <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted);display:flex;gap:10px;">
+        <span style="color:var(--accent)">🚫</span> <strong style="color:var(--text)">Don't skip lunch.</strong> If you miss lunch, you'll be ravenous at night and eat everything in sight.
+      </li>
+      <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted);display:flex;gap:10px;">
+        <span style="color:var(--accent)">🍽️</span> Use a <strong style="color:var(--text)">medium-sized plate</strong> — a full medium plate looks satisfying. A half-full big plate looks sad.
+      </li>
+      <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted);display:flex;gap:10px;">
+        <span style="color:var(--accent)">🥩</span> <strong style="color:var(--text)">Protein first</strong> — eat your chicken/meat/eggs before the bread or rice. You'll eat less overall.
+      </li>
+      <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted);display:flex;gap:10px;">
+        <span style="color:var(--accent)">📱</span> If you want to track properly, try <strong style="color:var(--text)">MyFitnessPal</strong> (free). Scan the barcode and it logs automatically.
+      </li>
+      <li style="padding:8px 0;font-size:13px;color:var(--muted);display:flex;gap:10px;">
+        <span style="color:var(--accent)">🏆</span> <strong style="color:var(--text)">Progress not perfection.</strong> One bad day doesn't undo a week of good eating. Just get back on track at the next meal.
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== TM31 CHEAT SHEET ===================== -->
+<div id="tab-cheat" class="tab-panel">
+  <p class="page-title">TM31 Beginner's Guide</p>
+  <div class="section-intro">
+    The TM31 looks complicated but it's basically a bowl that chops, cooks, and stirs for you. This guide tells you what every setting means in plain English so you can follow any recipe confidently.
+  </div>
+  <div class="cheat-grid">
+    <div class="cheat-card">
+      <h3>⚡ Speed Guide</h3>
+      <p>Speed controls how fast the blades spin. Here's what each level does:</p>
+      <table class="speed-table">
+        <tr><th>Speed</th><th>What it does</th></tr>
+        <tr><td>Speed 1</td><td>Very gentle stir — sauces, soups</td></tr>
+        <tr><td>Speed 2–3</td><td>Slow mixing — risotto, porridge</td></tr>
+        <tr><td>Speed 4–5</td><td>Chopping soft things — onion, herbs</td></tr>
+        <tr><td>Speed 7–8</td><td>Chopping firm veg — carrots, nuts</td></tr>
+        <tr><td>Speed 10</td><td>Pureeing soups, blending</td></tr>
+        <tr><td>Turbo</td><td>Crushing ice, very fast blitz</td></tr>
+        <tr><td>Reverse</td><td>Stirs WITHOUT cutting — for whole ingredients</td></tr>
+      </table>
+    </div>
+    <div class="cheat-card">
+      <h3>🌡️ Temperature Guide</h3>
+      <p>The TM31 heats food as it mixes. Temp goes up to 100°C (Varoma is steam level):</p>
+      <table class="speed-table">
+        <tr><th>Temp</th><th>What it does</th></tr>
+        <tr><td>37°C</td><td>Body temp — warming milk, yoghurt</td></tr>
+        <tr><td>60°C</td><td>Gentle heat — melting butter, warming</td></tr>
+        <tr><td>80°C</td><td>Simmering — sauces</td></tr>
+        <tr><td>100°C</td><td>Boiling — cooking rice, pasta</td></tr>
+        <tr><td>Varoma</td><td>Steam — cooking meat/veg above the bowl</td></tr>
+      </table>
+    </div>
+    <div class="cheat-card">
+      <h3>🧺 The Varoma Tray</h3>
+      <p>The Varoma is the big tray that sits on top of the TM31 lid. When the bowl is heating at Varoma temperature, steam rises and cooks whatever is in the tray.</p>
+      <p>Use it for: steaming chicken, fish, broccoli, carrots, eggs. Everything stays moist and tender — and healthy because nothing is fried.</p>
+      <p><strong style="color:var(--accent2)">Tip:</strong> Always put a lid on the Varoma tray while cooking.</p>
+    </div>
+    <div class="cheat-card">
+      <h3>🥣 The Simmering Basket</h3>
+      <p>A plastic basket that sits inside the bowl. Use it to cook rice or steam vegetables inside the liquid — it acts like a strainer so you can lift everything out cleanly when done.</p>
+      <p>Rinse your rice first, put it in the basket, add water to the bowl, and cook. When it's done, use the <strong style="color:var(--accent2)">spatula to lift the basket out</strong> — the TM31 spatula has a hook at the end specifically designed to clip into the basket handle so you can lift it safely without burning yourself.</p>
+    </div>
+    <div class="cheat-card">
+      <h3>🔑 Key Beginner Tips</h3>
+      <p><strong style="color:var(--accent)">Never go above Speed 4 while hot</strong> — hot liquid splashes and burns. Speed 1–2 for hot food.</p>
+      <p><strong style="color:var(--accent)">Always replace the MC cap</strong> when blending hot things — hold a cloth over it too.</p>
+      <p><strong style="color:var(--accent)">Use Reverse</strong> when you want to stir without cutting chunks.</p>
+      <p><strong style="color:var(--accent)">Don't overfill</strong> the bowl — max line is 2L.</p>
+    </div>
+    <div class="cheat-card">
+      <h3>🧼 Cleaning</h3>
+      <p>Dead easy:</p>
+      <ul style="list-style:none;padding:0;margin-top:8px;">
+        <li style="padding:4px 0;font-size:13px;color:var(--muted);">1. Add 1L warm water to the bowl</li>
+        <li style="padding:4px 0;font-size:13px;color:var(--muted);">2. Add a drop of dish soap</li>
+        <li style="padding:4px 0;font-size:13px;color:var(--muted);">3. Run 10 seconds at Speed 8</li>
+        <li style="padding:4px 0;font-size:13px;color:var(--muted);">4. Rinse and done</li>
+      </ul>
+      <p style="margin-top:8px;font-size:13px;color:var(--muted);">Stubborn food? Let soapy water soak 5 minutes first.</p>
+    </div>
+    <div class="cheat-card">
+      <h3>📏 Measuring in the TM31</h3>
+      <p>The bowl has a built-in scale — zero it (tare button), add ingredients directly. No measuring cups needed.</p>
+      <p style="margin-top:8px;font-size:13px;color:var(--muted);">
+        <strong style="color:var(--accent2)">Quick conversions:</strong><br>
+        1 cup of water = 250g<br>
+        1 tbsp = roughly 15g<br>
+        Stock cube + 500g water = 500ml stock
+      </p>
+    </div>
+  </div>
+</div>
 
 <script>
-const CATS=["All","Breakfast","Lunch","Dinner","Snacks & cheese","Protein shakes"];
-const M=[
-  {n:"Bacon, egg & mushroom bake",c:"Breakfast",t:"25 min",s:2,hor:["Metabolism","Energy","Thyroid support"],tags:[["Easy","tl"],["Comfort","am"]],why:"Eggs provide choline for brain function and selenium for thyroid support. Yolk fats help absorb vitamins D and K. Mushrooms are a rare dietary source of vitamin D — important for bone density and mood.",ing:["6 rashers short-cut bacon","4 eggs","200g mushrooms, sliced","100g cheddar, grated","3 tbsp cream","1 tbsp butter","Salt, pepper, fresh thyme"],meth:"Fry bacon, lay in baking dish. Sauté mushrooms in butter, add on top. Whisk cream into eggs, pour over. Top with cheese. Bake 180°C for 15 min until just set.",mac:{f:"38g",p:"34g",c:"2g"},sul:"Use butcher bacon or check labels — some cured bacon contains sulphite preservatives."},
-  {n:"Creamy scrambled eggs with herbs",c:"Breakfast",t:"10 min",s:2,hor:["Brain & mood","Tryptophan","Energy"],tags:[["Quick","tl"],["Brain support","pu"]],why:"Low and slow scrambled eggs in butter deliver choline and tryptophan — the precursor to serotonin and melatonin. Important for mood stability and sleep quality in menopause.",ing:["4 eggs","2 tbsp cream","1 tbsp butter","Fresh parsley or chives","Salt, pepper","2 rashers bacon (optional)"],meth:"Whisk eggs with cream. Melt butter over low heat. Stir slowly with a spatula until just set. Remove while slightly underdone — residual heat finishes them. Top with herbs.",mac:{f:"26g",p:"20g",c:"1g"}},
-  {n:"Baked eggs in tomato & cream",c:"Breakfast",t:"20 min",s:2,hor:["Oestrogen balance","Anti-inflammatory","Metabolism"],tags:[["Comfort","am"],["Anti-inflam","tl"]],why:"Tomatoes cooked in olive oil provide lycopene — a powerful antioxidant that reduces inflammation linked to menopausal symptoms. Fat significantly increases lycopene absorption, making the cream and oil here functional as well as tasty.",ing:["4 eggs","400g tin whole tomatoes","1 clove garlic","3 tbsp cream","30g parmesan, grated","1 tbsp olive oil","Salt, pepper, pinch chilli flakes"],meth:"Sauté garlic in oil. Add tomatoes, crush roughly and simmer 5 min. Stir in cream. Make 4 wells, crack in eggs. Cover and cook 6–8 min until whites just set. Finish with parmesan.",mac:{f:"24g",p:"20g",c:"6g"},sul:"Mutti and Coles Organic tinned tomatoes are generally sulphite-free."},
-  {n:"Tuna & cream cheese stuffed capsicum",c:"Lunch",t:"10 min",s:2,hor:["Omega-3","Vitamin C","Metabolism"],tags:[["No cook","pu"],["Quick","tl"]],why:"Capsicum is exceptionally high in vitamin C — essential for adrenal function and collagen synthesis in menopause. Tuna provides omega-3 for brain and mood. Cream cheese adds rich satiating fat with zero sulphite risk.",ing:["2 tins tuna in olive oil, drained","100g cream cheese","2 large capsicums, halved","Juice of ½ lemon","Fresh chives or parsley","Salt, pepper","Cherry tomatoes to serve"],meth:"Mix tuna with cream cheese, lemon and herbs until smooth. Season well. Spoon generously into capsicum halves. Serve with cherry tomatoes.",mac:{f:"26g",p:"34g",c:"6g"}},
-  {n:"Creamy chicken & mushroom soup",c:"Lunch",t:"30 min",s:2,hor:["Sleep","Adrenal support","Collagen"],tags:[["Comfort","am"],["Collagen","co"]],why:"Chicken simmered in stock releases collagen and gelatin supporting joints and gut lining. Cream stabilises blood sugar which directly supports cortisol regulation and sleep quality.",ing:["400g chicken thighs, diced","200g mushrooms, sliced","500ml chicken stock","150ml cream","1 clove garlic","1 tbsp butter","Fresh thyme, salt, pepper"],meth:"Sauté garlic in butter. Brown chicken. Add mushrooms 3 min. Pour in stock, simmer 15 min. Stir in cream, simmer 5 more min. Season well.",mac:{f:"40g",p:"38g",c:"4g"},sul:"Stock cubes often contain sulphites. Use homemade or Massel salt-reduced chicken stock."},
-  {n:"Tuna, egg & tomato plate",c:"Lunch",t:"10 min",s:2,hor:["Omega-3","Bone support","Metabolism"],tags:[["No cook","pu"],["Quick","tl"]],why:"A no-fuss plate of whole foods. Tuna provides omega-3. Eggs add choline for cognitive function. Tomatoes give lycopene and vitamin C. Olive oil aids absorption of all fat-soluble nutrients.",ing:["2 tins tuna in olive oil","4 hard-boiled eggs, halved","Cherry tomatoes","60g cheddar or parmesan","Handful macadamias","Olive oil, lemon, salt, pepper"],meth:"Arrange everything on a plate or into containers. Drizzle with olive oil and lemon. No cooking required.",mac:{f:"38g",p:"42g",c:"3g"}},
-  {n:"Sirloin with garlic herb butter & roasted veg",c:"Dinner",t:"25 min",s:2,hor:["Iron","Zinc","Hormone synthesis"],tags:[["Classic","tl"],["Iron","pu"],["Quick","tl"]],why:"Grass-fed beef is one of the best sources of zinc — essential for hormone synthesis and skin integrity. It also provides heme iron and B12, both commonly depleted in perimenopause. Garlic herb butter adds fat-soluble vitamins A and K.",ing:["2 sirloin or scotch fillet steaks","3 tbsp butter, softened","2 cloves garlic, minced","2 tbsp fresh parsley","1 tsp fresh thyme","200g green beans","200g cherry tomatoes","Olive oil, salt, pepper"],meth:"Mix butter with garlic and herbs, roll in cling wrap and chill. Roast tomatoes and beans at 200°C for 15 min. Pan-fry steaks in a hot cast iron 3–4 min per side. Rest 5 min. Top with a slice of herb butter to melt over.",mac:{f:"42g",p:"52g",c:"5g"}},
-  {n:"Steak with mustard cream sauce",c:"Dinner",t:"25 min",s:2,hor:["Iron","Metabolism","Adrenal support"],tags:[["Classic","tl"],["Iron","pu"]],why:"Mustard contains glucosinolates that support liver detoxification of spent hormones. Cream-based sauces are naturally low carb and sulphite-safe. Roasted capsicum adds vitamin C which improves iron absorption from the steak.",ing:["2 rump or sirloin steaks","150ml cream","1 tbsp Dijon mustard","1 clove garlic","1 tbsp butter","2 capsicums, roasted","Salt, pepper"],meth:"Pan-fry steaks to your liking, rest on a plate. In same pan sauté garlic 30 sec. Add cream and mustard, simmer 3–4 min until slightly thickened. Spoon over steak with roasted capsicum alongside.",mac:{f:"44g",p:"50g",c:"5g"},sul:"Maille Dijon is generally safe. Avoid pre-made mustard sauces or flavoured mustards."},
-  {n:"Creamy pepper steak",c:"Dinner",t:"20 min",s:2,hor:["Iron","Anti-inflammatory","Metabolism"],tags:[["Classic","tl"],["Quick","tl"],["Iron","pu"]],why:"Black pepper contains piperine which significantly boosts absorption of nutrients including B vitamins and selenium. Cream-based pepper sauce skips sulphite-heavy Worcestershire and wine entirely.",ing:["2 scotch fillet or rump steaks","150ml cream","1 tbsp cracked black pepper","1 clove garlic","1 tbsp butter","1 tsp Dijon mustard","50ml beef stock","Salt"],meth:"Press cracked pepper firmly into both sides of steaks. Sear in a very hot pan in butter to your liking. Rest steaks. In same pan add garlic, stock, cream and mustard. Simmer 3–4 min. Pour over steaks.",mac:{f:"42g",p:"50g",c:"2g"},sul:"Use homemade beef stock or check labels — avoid preservative numbers 220–221."},
-  {n:"Slow-cooked lamb with garlic & rosemary",c:"Dinner",t:"1.5 hrs",s:2,hor:["Iron","Bone support","Hormone synthesis"],tags:[["Classic Aussie","tl"],["Iron","pu"],["Slow cook","am"]],why:"Lamb is rich in zinc, heme iron and B12. A simple roast needs zero processed ingredients — one of the most sulphite-safe dinners possible. Rosemary contains rosmarinic acid, a neuroprotective antioxidant.",ing:["600g lamb leg or shoulder, bone-in","4 cloves garlic, slivered","Fresh rosemary sprigs","2 tbsp olive oil","300g green beans or eggplant","Salt, pepper"],meth:"Score lamb all over, press garlic slivers and rosemary into cuts. Rub with olive oil, season generously. Roast at 180°C — 25 min per 500g for medium. Rest 10 min before carving.",mac:{f:"34g",p:"50g",c:"3g"}},
-  {n:"Slow-cooked beef cheeks",c:"Dinner",t:"3.5 hrs (hands-off)",s:2,hor:["Bone & joint","Iron","Collagen"],tags:[["Collagen","co"],["Slow cook","am"],["Iron","pu"]],why:"Beef cheeks are collagen-dense — long slow cooking converts it to gelatin, supporting joints and gut lining. No wine needed; stock and tomato develop deep flavour naturally. Genuinely therapeutic for joint pain.",ing:["600g beef cheeks or chuck","400ml beef stock","400g tin crushed tomatoes","1 clove garlic","1 tbsp tomato paste","Fresh thyme, bay leaf","1 tbsp butter","Salt, pepper"],meth:"Sear beef all over in butter until browned. Add all remaining ingredients. Cover and cook 150°C for 3 hrs. Sauce thickens naturally. Serve with roasted green beans or eggplant.",mac:{f:"28g",p:"52g",c:"6g"},sul:"No wine in this recipe. Avoid stock with preservative 220 or 221 on label."},
-  {n:"Butter chicken (from scratch)",c:"Dinner",t:"35 min",s:2,hor:["Anti-inflammatory","Adrenal support","Metabolism"],tags:[["Comfort","am"],["Anti-inflam","tl"]],why:"Turmeric and ginger reduce systemic inflammation which worsens joint pain and hot flushes. Made entirely from individual spices — completely sulphite and additive-free. Cream and butter make it genuinely satiating.",ing:["500g chicken thighs, diced","200ml cream","2 tbsp butter","400g tin crushed tomatoes","1 clove garlic","1 tsp turmeric","1 tsp cumin","½ tsp paprika","½ tsp fresh ginger, grated","Salt"],meth:"Brown chicken in butter. Add garlic, ginger and spices, stir 1 min. Add tomatoes, simmer 10 min. Stir in cream, simmer 5 min until sauce thickens. Taste and adjust seasoning.",mac:{f:"46g",p:"42g",c:"7g"},sul:"Always use individual spices — pre-made curry powders and pastes commonly contain sulphites."},
-  {n:"Creamy veggie bake with cream cheese sauce",c:"Dinner",t:"40 min",s:2,hor:["Bone support","Anti-inflammatory","Oestrogen balance"],tags:[["Comfort","am"],["Veggie","tl"],["Bone support","co"]],why:"Cream cheese sauce is naturally low carb and sulphite-free. High-fibre keto vegetables support gut bacteria diversity, important for oestrogen metabolism. Parmesan adds calcium and vitamin K2 for bone support.",ing:["1 eggplant, sliced","2 capsicums, sliced","1 leek, sliced (white part)","150g green beans","150g cream cheese","100ml cream","50g parmesan, grated","1 clove garlic","1 tbsp butter","Salt, pepper, dried Italian herbs"],meth:"Roast veg with olive oil at 200°C for 20 min. Melt butter, add garlic, then cream cheese and cream — stir until smooth. Layer veg in baking dish, pour sauce over, top with parmesan. Bake 180°C for 15 min.",mac:{f:"38g",p:"16g",c:"10g"}},
-  {n:"White fish with garlic butter & beans",c:"Dinner",t:"15 min",s:2,hor:["Omega-3","Thyroid support","Bone support"],tags:[["Quick","tl"],["Light","bl"]],why:"White fish provides iodine — critical for thyroid function which often shifts in menopause, affecting weight and energy. Simple garlic butter has zero sulphite risk and delivers fat-soluble vitamins alongside flavour.",ing:["2 white fish fillets (barramundi, flathead or snapper)","3 tbsp butter","2 cloves garlic, minced","Juice of ½ lemon","2 tbsp fresh parsley","200g green beans","Salt, pepper"],meth:"Blanch green beans until just tender. Pat fish dry, season well. Cook in butter 3–4 min per side. Add garlic and lemon in the final minute. Spoon the butter over to serve.",mac:{f:"24g",p:"38g",c:"4g"}},
-  {n:"Baked parmesan crisps",c:"Snacks & cheese",t:"12 min",s:2,hor:["Bone support","Calcium","Vitamin K2"],tags:[["Batch make","pu"],["Bone support","co"],["Zero carbs","tl"]],why:"Parmesan is one of the highest calcium cheeses and contains meaningful vitamin K2 — the nutrient that directs calcium into bone rather than soft tissue. Virtually zero carbs. Make a batch and keep in an airtight container for up to 3 days.",ing:["100g parmesan, finely grated","Optional: cracked pepper, smoked paprika, or dried rosemary"],meth:"Preheat oven to 200°C. Line a tray with baking paper. Place small mounds (1 heaped tsp each) well apart, flatten slightly. Bake 6–8 min until golden and lacy. Cool completely before removing — they crisp as they cool.",mac:{f:"14g",p:"12g",c:"0g"}},
-  {n:"Cream cheese dip with capsicum sticks",c:"Snacks & cheese",t:"10 min",s:2,hor:["Bone support","Vitamin C","Adrenal support"],tags:[["Quick","tl"],["No cook","pu"]],why:"Cream cheese provides fat-soluble vitamins A and D. Capsicum contains more vitamin C per gram than citrus — important for adrenal support and collagen synthesis. Keeps in the fridge for 3 days.",ing:["150g cream cheese, softened","1 tbsp sour cream","1 clove garlic, minced","1 tbsp fresh chives or parsley","Salt, pepper","2 capsicums, cut into strips","Cherry tomatoes to serve"],meth:"Beat cream cheese with sour cream, garlic and herbs until smooth. Season well. Serve with capsicum strips and tomatoes. Keeps in fridge for 3 days.",mac:{f:"22g",p:"6g",c:"5g"}},
-  {n:"Mini bacon & cheese frittatas",c:"Snacks & cheese",t:"25 min",s:2,hor:["Metabolism","Bone support","Energy"],tags:[["Batch make","pu"],["Warm snack","am"]],why:"Make 12 on Sunday and you have snacks all week. Eggs and cheese together deliver calcium, choline, B12 and complete protein. They reheat in 60 seconds and are endlessly customisable.",ing:["6 eggs","4 rashers bacon, diced","80g cheddar, grated","3 tbsp cream","2 tbsp cream cheese","Salt, pepper","Optional: diced capsicum, fresh herbs"],meth:"Preheat oven 180°C. Grease a 12-hole muffin tin well. Fry bacon briefly. Whisk eggs, cream and cream cheese. Stir in bacon, most of the cheese and any extras. Fill muffin holes ¾ full. Top with remaining cheese. Bake 15–18 min until puffed and golden.",mac:{f:"28g",p:"22g",c:"1g"},sul:"Check bacon labels — use butcher bacon or sulphite-free brands where possible."},
-  {n:"Almond & macadamia fat bombs",c:"Snacks & cheese",t:"10 min + chill",s:2,hor:["Metabolism","Energy","Hormone balance"],tags:[["Prep ahead","pu"],["Keto snack","tl"]],why:"Macadamias are high in palmitoleic acid supporting insulin sensitivity — important when oestrogen decline affects blood sugar. Almond butter adds vitamin E. Coconut oil MCTs provide fast ketone energy, helpful for brain fog.",ing:["100g macadamias, blitzed","2 tbsp almond butter (100% almonds)","3 tbsp coconut oil, melted","1 tbsp cacao powder","Pinch sea salt","Stevia or monk fruit to taste"],meth:"Blitz macadamias to a rough crumb. Mix in all remaining ingredients. Roll into balls (approx 12). Refrigerate 30 min until firm. Store in fridge. Serving = 2 balls.",mac:{f:"24g",p:"3g",c:"2g"},sul:"Use plain 100% almond butter with no preservatives listed."},
-  {n:"Magnesium seed mix & cinnamon tonic",c:"Snacks & cheese",t:"5 min",s:2,hor:["Sleep","Bone support","Nervous system"],tags:[["Sleep support","pu"],["Bone support","am"]],why:"Pumpkin seeds are one of the richest dietary sources of magnesium — essential for sleep onset, muscle relaxation and bone density. The warm cinnamon tonic stabilises blood sugar overnight, reducing cortisol spikes that cause night waking.",ing:["SEED MIX: 30g pumpkin seeds, 20g sunflower seeds, pinch sea salt","TONIC: 200ml So Good almond or coconut milk, ¼ tsp cinnamon, pinch nutmeg, stevia to taste"],meth:"Toast seeds in a dry pan 3–4 min. Store in a jar. Warm milk gently (don't boil), whisk in cinnamon and nutmeg. Drink 30 min before bed.",mac:{f:"16g",p:"7g",c:"4g"}},
-  {n:"Cheese, egg & tomato plate",c:"Snacks & cheese",t:"5 min",s:2,hor:["Bone support","Hormone synthesis","Energy"],tags:[["No cook","pu"],["Quick","tl"]],why:"Aged hard cheese contains calcium and vitamin K2 — directing calcium into bones, not soft tissue. Hard-boiled eggs provide complete protein and choline for cognitive function. Cherry tomatoes add vitamin C and lycopene.",ing:["2 hard-boiled eggs, halved","60g aged cheddar or parmesan","Cherry tomatoes","Handful macadamias","Olive oil drizzle","Sea salt, cracked pepper"],meth:"Arrange on a plate or board. Season well. Drizzle with olive oil. No cooking needed.",mac:{f:"36g",p:"18g",c:"3g"}},
-  {n:"Chocolate protein shake",c:"Protein shakes",t:"3 min",s:1,hor:["Muscle mass","Bone & joint","Brain support"],tags:[["Quick","tl"],["Post-workout","pu"]],why:"Whey isolate is the gold standard for leucine — the amino acid that triggers muscle protein synthesis, critical for preserving muscle mass as oestrogen declines. Cacao adds magnesium and flavonoids. Coconut milk MCTs support mental clarity.",ing:["1.5 scoops whey isolate (chocolate or unflavoured)","250ml So Good coconut milk","1 tbsp cacao powder","1 tsp cinnamon","Pinch sea salt","3–4 ice cubes","Stevia if needed"],meth:"Blend all ingredients 30 seconds until smooth and frothy. Drink immediately for best texture.",mac:{f:"12g",p:"38g",c:"4g"}},
-  {n:"Vanilla almond breakfast shake",c:"Protein shakes",t:"3 min",s:1,hor:["Metabolism","Energy","Blood sugar balance"],tags:[["Quick","tl"],["Breakfast sub","am"]],why:"A protein-first breakfast stabilises cortisol and blood sugar from the moment you wake — particularly important in menopause when insulin sensitivity shifts. Works as a full breakfast on busy mornings without compromising ketosis.",ing:["1.5 scoops vanilla whey isolate","250ml So Good almond milk","1 tbsp almond butter (100% almonds)","½ tsp vanilla extract","¼ tsp cinnamon","3–4 ice cubes"],meth:"Blend all ingredients until smooth. For a thicker shake add more ice. Drink within 20 min of making.",mac:{f:"14g",p:"40g",c:"4g"},sul:"Unflavoured or naturally flavoured whey isolate is lowest risk for additives."},
-  {n:"Creamy coconut & cinnamon shake",c:"Protein shakes",t:"3 min",s:1,hor:["Sleep","Metabolism","Adrenal support"],tags:[["Quick","tl"],["Evening option","pu"]],why:"A gentler, lower-stimulant shake suited to evenings or rest days. Coconut milk adds MCTs and satiating fat. Cinnamon helps regulate blood sugar overnight. Whey taken in the evening supports overnight muscle repair.",ing:["1 scoop whey isolate (vanilla or unflavoured)","150ml So Good coconut milk","50ml water","½ tsp cinnamon","Pinch nutmeg","Stevia to taste","3 ice cubes"],meth:"Shake in a shaker bottle or blend briefly. Serve cold.",mac:{f:"10g",p:"26g",c:"3g"}},
-  {n:"Berry & almond power shake",c:"Protein shakes",t:"5 min",s:1,hor:["Oestrogen balance","Anti-inflammatory","Brain support"],tags:[["Antioxidant","tl"],["Brain support","pu"]],why:"Frozen blueberries and raspberries are low-carb berries packed with anthocyanins — antioxidants shown to support cognitive function and reduce inflammation. One of the few fruits that fits keto in small amounts.",ing:["1.5 scoops vanilla whey isolate","200ml So Good almond milk","60g frozen blueberries or raspberries","1 tbsp almond butter","3 ice cubes","Stevia if needed"],meth:"Blend all ingredients until smooth and thick. Frozen berries make this naturally cold and creamy without much ice.",mac:{f:"12g",p:"38g",c:"8g"}}
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function switchSubTab(section, name, btn) {
+  const panels = document.querySelectorAll('#tab-' + section + ' .sub-panel');
+  panels.forEach(p => p.classList.remove('active'));
+  const btns = document.querySelectorAll('#tab-' + section + ' .sub-tab-btn');
+  btns.forEach(b => b.classList.remove('active'));
+  document.getElementById(section + '-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function toggleDetail(btn) {
+  const detail = btn.previousElementSibling;
+  const isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open');
+  btn.textContent = isOpen ? '▼ Show details' : '▲ Hide details';
+}
+
+function makeCard(data, featured) {
+  return `
+  <div class="meal-card${featured ? ' featured' : ''}">
+    <div class="card-header">
+      <span class="card-emoji">${data.emoji}</span>
+      <div class="card-title">${data.title}</div>
+      <div class="card-subtitle">${data.subtitle}</div>
+    </div>
+    <div class="macro-bar">
+      <div class="macro kcal"><span class="macro-val">${data.kcal}</span><span class="macro-lbl">kcal</span></div>
+      <div class="macro prot"><span class="macro-val">${data.protein}g</span><span class="macro-lbl">protein</span></div>
+      <div class="macro carb"><span class="macro-val">${data.carbs}g</span><span class="macro-lbl">carbs</span></div>
+      <div class="macro fat"><span class="macro-val">${data.fat}g</span><span class="macro-lbl">fat</span></div>
+      <div class="macro fib"><span class="macro-val">${data.fibre}g</span><span class="macro-lbl">fibre</span></div>
+    </div>
+    <div class="card-detail">
+      <div class="detail-section">
+        <h4>🛒 Ingredients</h4>
+        <ul>${data.ingredients.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      ${data.sauce ? `<div class="detail-section"><h4>🥣 Sauce Options</h4><ul>${data.sauce.map(s => `<li>${s}</li>`).join('')}</ul></div>` : ''}
+      <div class="detail-section">
+        <h4>📋 Steps</h4>
+        <ol class="steps-list">${data.steps.map(s => `<li>${s}</li>`).join('')}</ol>
+      </div>
+      ${data.tip ? `<div class="tip-box">${data.tip}</div>` : ''}
+    </div>
+    <button class="card-toggle" onclick="toggleDetail(this)">▼ Show details</button>
+  </div>`;
+}
+
+function makeGrabCard(data) {
+  return `
+  <div class="grab-card">
+    <h3>${data.emoji} ${data.title}</h3>
+    <div class="grab-macros">
+      <span class="grab-badge kcal">~${data.kcal} kcal</span>
+      <span class="grab-badge prot">~${data.protein}g protein</span>
+    </div>
+    <p>${data.desc}</p>
+    <ul>${data.tips.map(t => `<li>${t}</li>`).join('')}</ul>
+  </div>`;
+}
+
+function renderCards(data, containerId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = data.map(d => makeCard(d, false)).join('');
+}
+
+// ===================== SALAD PROTEINS =====================
+const saladProteins = [
+  {
+    emoji: '🐟',
+    title: 'Tuna + Lemon Tahini',
+    subtitle: 'Salad base + protein • No heating',
+    kcal: 320, protein: 38, carbs: 14, fat: 10, fibre: 6,
+    ingredients: ['2 x 95g cans tuna in springwater (drained)', '1 portion tradie salad base', '1 tbsp tahini', 'Juice of ½ lemon (or 1 tbsp bottled lemon juice)', '1 tbsp water (to thin the dressing)', 'Salt and pepper'],
+    sauce: ['Lemon tahini — mix 1 tbsp tahini + 1 tbsp lemon juice + 1 tbsp water. Shake in a small jar.', 'Or swap: light balsamic dressing, or squeeze of sweet chilli sauce'],
+    steps: ['Open and drain tuna.', 'Make dressing: combine tahini, lemon juice and water in a small container. Shake or stir until smooth.', 'Put your salad base portion in a container.', 'Top with tuna.', 'Drizzle dressing over — pack separately if prepping ahead.'],
+    tip: 'Tuna is the fastest high-protein lunch on this list. Two cans = 40g protein with almost no effort.'
+  },
+  {
+    emoji: '🍗',
+    title: 'Chicken + Honey Mustard',
+    subtitle: 'Salad base + protein • Classic combo',
+    kcal: 380, protein: 46, carbs: 14, fat: 9, fibre: 6,
+    ingredients: ['150g cooked chicken breast, sliced (from Sunday batch cook)', '1 portion tradie salad base', '1 tbsp light honey mustard dressing', '1 tbsp plain Greek yoghurt (makes it creamy)'],
+    sauce: ['Honey mustard: mix 1 tbsp honey mustard + 1 tbsp Greek yoghurt. Creamy and tasty.', 'Or swap: sweet chilli sauce, light Caesar, or soy + sesame dressing'],
+    steps: ['Slice your batch-cooked chicken.', 'Mix honey mustard and Greek yoghurt in a small container.', 'Add salad base to your container, top with chicken.', 'Drizzle dressing over — or pack it separately.'],
+    tip: 'Batch cook 1kg of chicken Sunday. This meal takes 3 minutes to assemble all week.'
+  },
+  {
+    emoji: '🥚',
+    title: 'Boiled Eggs + Light Caesar',
+    subtitle: 'Salad base + protein • No cooking needed',
+    kcal: 295, protein: 20, carbs: 12, fat: 14, fibre: 6,
+    ingredients: ['3 hard boiled eggs (batch cooked Sunday)', '1 portion tradie salad base', '1.5 tbsp light Caesar dressing (Paul Newman\'s Light)', '10g shaved parmesan (optional — counts towards fat)'],
+    sauce: ['Light Caesar: Paul Newman\'s Light Caesar is the best option — about 45 kcal per tbsp.', 'Or swap: lemon tahini, or just olive oil + lemon + salt'],
+    steps: ['Peel your pre-boiled eggs and halve them.', 'Put salad base in your container.', 'Arrange egg halves on top.', 'Drizzle Caesar dressing over and add parmesan if using.'],
+    tip: 'Boiled eggs are already done if you prepped Sunday. This is a zero-cooking lunch.'
+  },
+  {
+    emoji: '🥩',
+    title: 'Beef Strips + Soy Ginger',
+    subtitle: 'Salad base + protein • Reheat at work',
+    kcal: 390, protein: 40, carbs: 14, fat: 14, fibre: 6,
+    ingredients: ['150g lean beef strips (pan-fried Sunday or the night before)', '1 portion tradie salad base', '1 tbsp reduced-salt soy sauce', '1 tsp sesame oil', '½ tsp fresh ginger (or ground ginger)', '1 tsp honey'],
+    sauce: ['Soy ginger: mix soy sauce + sesame oil + ginger + honey. Shake in a small jar.', 'Or swap: hoisin sauce thinned with a splash of water, or sweet chilli'],
+    steps: ['Cook beef strips: heat pan on high, spray oil, cook 3–4 mins. Season with soy sauce.', 'Make dressing: combine soy, sesame oil, ginger and honey.', 'Cool beef before adding to salad — or reheat separately and eat warm.', 'Put salad base in container, top with beef, drizzle dressing.'],
+    tip: 'Cook the beef the night before or on Sunday. Tastes great cold with the soy ginger dressing.'
+  },
+  {
+    emoji: '🐟',
+    title: 'Salmon + Dill Yoghurt',
+    subtitle: 'Salad base + protein • Premium option',
+    kcal: 420, protein: 38, carbs: 12, fat: 18, fibre: 6,
+    ingredients: ['150g cooked salmon fillet (bake or pan-fry Sunday)', '1 portion tradie salad base', '2 tbsp plain Greek yoghurt', '½ tsp dried dill (or fresh if you have it)', '1 tsp lemon juice', 'Salt and pepper'],
+    sauce: ['Dill yoghurt: mix Greek yoghurt + dill + lemon juice + salt. Takes 30 seconds.', 'Or swap: lemon tahini, or just a squeeze of lemon and olive oil'],
+    steps: ['Cook salmon: spray pan, cook skin-side down 4 mins, flip, 3 more mins. Or bake 180°C 15 mins.', 'Make dressing: mix yoghurt, dill, lemon juice, salt.', 'Flake salmon into chunks.', 'Put salad base in container, top with salmon, dollop dressing.'],
+    tip: 'Salmon has healthy fats that help you feel full and support weight loss. Don\'t fear the fat — it\'s the good kind.'
+  },
+  {
+    emoji: '🦃',
+    title: 'Turkey + Balsamic',
+    subtitle: 'Salad base + protein • Easiest of all',
+    kcal: 300, protein: 36, carbs: 14, fat: 7, fibre: 6,
+    ingredients: ['120g deli turkey breast slices', '1 portion tradie salad base', '1 tbsp light balsamic dressing', '30g lite feta cheese (optional — adds 40 kcal)'],
+    sauce: ['Light balsamic: Ken\'s or Paul Newman\'s Light. About 30–40 kcal per tbsp.', 'Or swap: honey mustard, sweet chilli, or lemon tahini'],
+    steps: ['Open the deli turkey — it\'s already cooked.', 'Put salad base in your container.', 'Lay turkey slices on top, crumble feta if using.', 'Drizzle balsamic over.'],
+    tip: 'This is the easiest possible lunch — zero cooking if you have turkey from the deli counter.'
+  },
+  {
+    emoji: '🫘',
+    title: 'Chickpeas + Sweet Chilli',
+    subtitle: 'Salad base + protein • Plant-based option',
+    kcal: 355, protein: 18, carbs: 46, fat: 7, fibre: 14,
+    ingredients: ['1 x 400g can chickpeas, drained and rinsed', '1 portion tradie salad base', '1 tbsp sweet chilli sauce', '1 tbsp lemon juice', '30g lite feta (optional)', '1 tbsp sunflower seeds'],
+    sauce: ['Sweet chilli + lemon: simple and tasty. Squeeze lemon first, then drizzle sweet chilli.', 'Or swap: Greek dressing (olive oil + lemon + oregano), or lemon tahini'],
+    steps: ['Open and rinse chickpeas.', 'Put salad base in your container.', 'Pour chickpeas on top.', 'Crumble feta if using, sprinkle sunflower seeds.', 'Drizzle sweet chilli and lemon juice over.'],
+    tip: 'Chickpeas have 14g fibre per serve — that\'s enormous. You will NOT be hungry after this salad.'
+  }
 ];
 
-let cat="All", sel=null;
+// ===================== LUNCHES =====================
+const lunches = [
+  {
+    emoji: '🍗',
+    title: 'Chicken Rice Bowl',
+    subtitle: 'High protein • Easy to reheat',
+    kcal: 480, protein: 45, carbs: 45, fat: 8, fibre: 4,
+    ingredients: ['150g cooked chicken breast (sliced)', '1 microwave brown rice cup', 'Large handful baby spinach', '½ cucumber, sliced', '2 tbsp low-sodium soy sauce', '1 tsp sesame oil (optional)'],
+    steps: ['Microwave the rice cup for 90 seconds.', 'Slice your cooked chicken — if reheating, microwave 1–2 minutes until hot.', 'Put rice in container, top with spinach and cucumber.', 'Pour over soy sauce and sesame oil.', 'Eat cold or reheat the whole thing at work.'],
+    tip: 'Batch cook 1kg of chicken on Sunday and this takes 3 minutes to assemble all week.'
+  },
+  {
+    emoji: '🥙',
+    title: 'High-Protein Chicken Wrap',
+    subtitle: 'No heating needed • 5 mins',
+    kcal: 420, protein: 40, carbs: 35, fat: 9, fibre: 5,
+    ingredients: ['1 large wholegrain wrap', '130g cooked chicken breast', '2 tbsp hummus', 'Large handful mixed lettuce', '½ capsicum, sliced', '1 tsp sweet chilli sauce'],
+    steps: ['Lay the wrap flat on a surface.', 'Spread hummus across the whole wrap.', 'Add lettuce, capsicum, then chicken.', 'Drizzle sweet chilli sauce over the top.', 'Fold in the sides, then roll up tightly. Wrap in foil.'],
+    tip: 'Make 2 at once and put the second in the fridge. Tomorrow\'s lunch is already done.'
+  },
+  {
+    emoji: '🍱',
+    title: 'Beef & Rice Container',
+    subtitle: 'Hearty • Reheat at work',
+    kcal: 490, protein: 40, carbs: 48, fat: 11, fibre: 5,
+    ingredients: ['150g extra-lean beef mince (cooked)', '1 microwave brown rice cup', '1 cup frozen stir-fry veg (microwaved)', '2 tbsp reduced-salt soy sauce', '1 tsp garlic powder', '1 tsp ginger (optional)'],
+    steps: ['Brown the mince in a non-stick pan, break it up as it cooks.', 'Add garlic powder, soy sauce, ginger. Stir through.', 'Microwave rice cup and veg separately, combine everything in a container.', 'Refrigerate — reheat at work for 2–3 minutes.'],
+    tip: 'Cook a double batch of mince on Sunday. Freeze the extra in zip-lock bags.'
+  },
+  {
+    emoji: '🥚',
+    title: 'Egg & Veg Frittata Slice',
+    subtitle: 'Batch bake Sunday • Grab all week',
+    kcal: 310, protein: 26, carbs: 8, fat: 18, fibre: 2,
+    ingredients: ['6 eggs (for the whole batch)', '1 cup frozen mixed veg (defrosted)', '½ cup lite grated cheese', '1 small zucchini, grated', 'Salt, pepper, mixed herbs', 'Olive oil spray'],
+    steps: ['Preheat oven to 180°C. Spray a baking dish or muffin tin with olive oil.', 'Beat the 6 eggs in a bowl.', 'Mix in the veg, cheese, zucchini, herbs, salt and pepper.', 'Pour into the dish or tin — fill muffin holes ¾ full.', 'Bake 20–25 minutes until set and golden. Makes 4 servings.'],
+    tip: 'These keep 4 days in the fridge and are great eaten cold — no microwave needed on site.'
+  },
+  {
+    emoji: '🌯',
+    title: 'Roast Beef & Salad Roll',
+    subtitle: 'Deli counter easy • No cooking',
+    kcal: 390, protein: 35, carbs: 38, fat: 7, fibre: 4,
+    ingredients: ['1 wholegrain roll', '120g lean deli roast beef slices', '1 tbsp wholegrain mustard', 'Handful rocket or spinach', '4 slices cucumber', '2 slices lite cheese'],
+    steps: ['Slice your roll in half.', 'Spread mustard on one side.', 'Layer cheese, then beef, then salad.', 'Close it up. Wrap in foil if eating later.'],
+    tip: 'Deli roast beef is very lean. Avoid processed meats like ham more than once or twice a week — too much sodium.'
+  },
+  {
+    emoji: '🥪',
+    title: 'Turkey & Avocado Sandwich',
+    subtitle: 'Good fats • Fast to make',
+    kcal: 410, protein: 34, carbs: 36, fat: 12, fibre: 6,
+    ingredients: ['2 slices wholegrain bread', '120g deli turkey breast slices', '¼ avocado (about 50g)', '1 tsp Dijon mustard', 'Large handful spinach', '4 slices tomato'],
+    steps: ['Spread avocado on one slice and mash it slightly.', 'Spread mustard on the other slice.', 'Layer turkey, spinach and tomato.', 'Press together and wrap in baking paper.'],
+    tip: 'Squeeze a little lemon on the avocado to stop it browning if making ahead.'
+  }
+];
 
-function renderTabs(){
-  document.getElementById("tabs").innerHTML=CATS.map(c=>`<button class="tab${c===cat?" on":""}" onclick="setC('${c}')">${c}</button>`).join("");
-}
+// ===================== SNACKS - MAKE IT =====================
+const snacks = [
+  {
+    emoji: '🥚',
+    title: 'Boiled Eggs',
+    subtitle: 'The easiest protein hit',
+    kcal: 140, protein: 12, carbs: 1, fat: 10, fibre: 0,
+    ingredients: ['2 large eggs', 'Pinch of salt and pepper', 'Optional: small sachet of hot sauce'],
+    steps: ['Put eggs in a pot, cover with cold water.', 'Bring to boil over high heat.', 'Once boiling, reduce to medium and cook 9 minutes for hard boiled.', 'Run under cold water to stop cooking. Peel and eat, or store in fridge up to 5 days.'],
+    tip: 'Batch boil 6–8 on Sunday. Zero effort for the rest of the week.'
+  },
+  {
+    emoji: '🫙',
+    title: 'Greek Yoghurt & Berries',
+    subtitle: 'High protein • Sweet hit',
+    kcal: 175, protein: 18, carbs: 16, fat: 3, fibre: 2,
+    ingredients: ['200g plain Greek yoghurt (low-fat)', '½ cup frozen berries (defrosted or still frozen)', '1 tsp honey (optional)'],
+    steps: ['Scoop yoghurt into a container.', 'Top with berries — frozen is fine if packing for later.', 'Add honey if you want it sweeter.'],
+    tip: 'Buy big tubs of plain Greek yoghurt — much cheaper than individual cups. Chobani or Jalna are great.'
+  },
+  {
+    emoji: '🧀',
+    title: 'Cottage Cheese & Crackers',
+    subtitle: 'Surprisingly filling',
+    kcal: 200, protein: 19, carbs: 18, fat: 4, fibre: 3,
+    ingredients: ['150g low-fat cottage cheese', '5–6 Ryvita crackers', 'Pinch of black pepper or paprika'],
+    steps: ['Scoop cottage cheese into a small container.', 'Pack crackers separately so they stay crunchy.', 'Dip and eat. Add pepper or paprika for flavour.'],
+    tip: 'Cottage cheese has more protein per calorie than almost any other food. Try it cold with a little salt and crunch.'
+  },
+  {
+    emoji: '🐟',
+    title: 'Tuna Snack Pack & Crackers',
+    subtitle: 'Zero prep • Highest protein',
+    kcal: 185, protein: 22, carbs: 12, fat: 4, fibre: 1,
+    ingredients: ['1 x Sirena flavoured tuna snack pack (no can opener needed)', '5 Ryvita crackers'],
+    steps: ['Open the snack pack.', 'Eat with crackers.'],
+    tip: 'Sirena make flavoured tuna packs — lemon & herb, chilli, etc. Great for a toolbox or ute.'
+  },
+  {
+    emoji: '🥜',
+    title: 'Pre-Portioned Almonds',
+    subtitle: '20g only — don\'t freestyle it',
+    kcal: 120, protein: 4, carbs: 4, fat: 10, fibre: 2,
+    ingredients: ['20g raw almonds (roughly 18–20 nuts)'],
+    steps: ['Weigh out 20g on your kitchen scale once.', 'Note what that looks like — about a small handful.', 'Pre-bag into zip-lock bags on Sunday.', 'Grab one bag when you need a snack.'],
+    tip: 'Almonds are healthy but easy to overeat. A 20g portion is the rule — not "a handful" because your handful is probably 40–50g.'
+  },
+  {
+    emoji: '🧀',
+    title: 'Babybel + Apple',
+    subtitle: 'Great combo • Easy to grab',
+    kcal: 155, protein: 7, carbs: 20, fat: 6, fibre: 3,
+    ingredients: ['2 x Babybel Light', '1 medium apple'],
+    steps: ['Grab both and put them in your lunch bag.', 'Eat the apple first (fibre fills you up), then the cheese.'],
+    tip: 'Babybel Light is only 45 kcal each and 5g protein. The red wax keeps it shelf stable all day — no refrigeration needed.'
+  },
+  {
+    emoji: '🥤',
+    title: 'Protein Shake',
+    subtitle: 'Days when you can\'t eat properly',
+    kcal: 160, protein: 25, carbs: 8, fat: 3, fibre: 1,
+    ingredients: ['1 scoop vanilla or choc whey protein powder (~30g)', '300ml cold water or low-fat milk', 'Optional: ½ banana'],
+    steps: ['Add water or milk to a shaker bottle.', 'Add protein powder.', 'Screw lid on, shake 10–15 seconds.', 'Drink immediately or within an hour.'],
+    tip: 'Not a meal replacement — use as a snack or when you\'ve missed a meal. Muscle Nation, Optimum Nutrition, and BSc are solid budget options.'
+  },
+  {
+    emoji: '🍌',
+    title: 'Banana & Peanut Butter',
+    subtitle: 'Energy + protein hit',
+    kcal: 210, protein: 7, carbs: 32, fat: 7, fibre: 3,
+    ingredients: ['1 medium banana', '1 tbsp natural peanut butter (15g)'],
+    steps: ['Peel banana.', 'Dip in peanut butter or spread it on.'],
+    tip: 'Buy natural peanut butter (just peanuts, no added sugar). The oil separates — just stir it back in.'
+  },
+  {
+    emoji: '🫘',
+    title: 'Edamame (Salted)',
+    subtitle: 'High protein • Fun to eat',
+    kcal: 125, protein: 11, carbs: 9, fat: 5, fibre: 5,
+    ingredients: ['150g frozen edamame in pods', 'Pinch of sea salt'],
+    steps: ['Put edamame in a microwave-safe bowl.', 'Microwave for 3 minutes.', 'Sprinkle with salt and eat by squeezing beans out of the pods.'],
+    tip: 'Frozen edamame at Woolies or Coles in the frozen veg aisle. Great cold too — put them in your bag frozen and they\'ll be ready by smoko.'
+  },
+  {
+    emoji: '🍚',
+    title: 'Vegemite & Cottage Cheese Rice Cakes',
+    subtitle: 'Savoury hit • Super low cal',
+    kcal: 165, protein: 14, carbs: 20, fat: 2, fibre: 2,
+    ingredients: ['3 plain rice cakes', '3 tbsp cottage cheese', 'Vegemite (thin scrape on each)', 'Optional toppings: sliced cucumber, tomato, shallots, or a sprinkle of sesame seeds'],
+    steps: ['Lay out 3 rice cakes.', 'Spread a thin scrape of Vegemite on each (it\'s salty, a little goes a long way).', 'Spoon cottage cheese on top.', 'Add any optional toppings you like.'],
+    tip: 'Topping options: cucumber slices, cherry tomato halves, sliced shallot, cracked pepper, sesame seeds, or a thin slice of deli turkey on top.'
+  },
+  {
+    emoji: '🥬',
+    title: 'Celery & Peanut Butter',
+    subtitle: 'Crunch factor • Very low cal',
+    kcal: 145, protein: 5, carbs: 8, fat: 10, fibre: 3,
+    ingredients: ['4 celery stalks, cut into sticks', '1.5 tbsp natural peanut butter (22g)', 'Optional: raisins pressed into the peanut butter (classic "ants on a log")'],
+    steps: ['Cut celery into sticks — do this on Sunday for the week.', 'Pack peanut butter in a small container.', 'Dip and eat.'],
+    tip: 'Celery is almost zero calories. The peanut butter is where the energy comes from — stick to 1.5 tbsp max.'
+  },
+  {
+    emoji: '🍳',
+    title: 'Microwave Scrambled Eggs',
+    subtitle: '2 mins • No pan • High protein',
+    kcal: 175, protein: 18, carbs: 2, fat: 10, fibre: 0,
+    ingredients: ['3 large eggs', '2 tbsp low-fat milk', 'Salt and pepper', 'Optional: splash of hot sauce or a sprinkle of cheese'],
+    steps: ['Crack 3 eggs into a microwave-safe mug or bowl.', 'Add milk, salt and pepper. Beat with a fork.', 'Microwave for 60 seconds. Stir.', 'Microwave another 30–60 seconds until just set — don\'t overcook or they go rubbery.', 'Eat straight from the mug.'],
+    tip: 'This works in a kettle room at any job site. One mug, one fork, done in 2 minutes. Add hot sauce if you have it.'
+  },
+  {
+    emoji: '🍇',
+    title: 'Frozen Grapes',
+    subtitle: 'Sweet craving killer • Very low cal',
+    kcal: 90, protein: 1, carbs: 22, fat: 0, fibre: 1,
+    ingredients: ['1 cup seedless grapes (about 150g)'],
+    steps: ['Wash grapes and pat dry.', 'Pull them off the stems.', 'Put in a zip-lock bag or container.', 'Freeze for at least 4 hours — overnight is best.', 'Eat them frozen like little flavour bombs.'],
+    tip: 'When you\'re craving something sweet, frozen grapes are the best swap. They taste like sorbet and take ages to eat. Prep on Sunday — always have a bag in the freezer.'
+  },
+  {
+    emoji: '🫙',
+    title: 'Overnight Oats',
+    subtitle: 'Make Sunday • Grab all week',
+    kcal: 380, protein: 28, carbs: 45, fat: 7, fibre: 5,
+    ingredients: ['60g rolled oats', '200ml low-fat milk', '1 scoop vanilla protein powder (~30g)', '1 tsp honey', 'Optional: ½ banana or handful of berries (add in the morning)'],
+    steps: ['Put oats, milk, protein powder and honey in a jar or container with a lid.', 'Stir everything together.', 'Put the lid on and put in the fridge.', 'In the morning — grab the jar and go. No heating needed.', 'Add banana or berries just before eating if you want.'],
+    tip: 'Make 5 jars on Sunday night. This is your 5:30am breakfast sorted for the whole week — zero morning effort. Also works as a snack if you\'re only having half a portion (halve all quantities = ~190 kcal).'
+  },
+  {
+    emoji: '🍪',
+    title: 'Bliss Balls',
+    subtitle: 'Batch make Sunday • Tastes like a treat',
+    kcal: 185, protein: 6, carbs: 20, fat: 9, fibre: 3,
+    ingredients: ['1 cup rolled oats (90g)', '½ cup natural peanut butter (130g)', '3 tbsp honey', '½ scoop protein powder (optional but recommended)', '2 tbsp desiccated coconut', '2 tbsp dark choc chips (optional)'],
+    steps: ['Mix all ingredients together in a bowl until combined. If it\'s too dry, add 1 tsp of water.', 'Roll into balls about the size of a 50c coin — you should get 12–14 balls.', 'Roll in extra coconut if you like.', 'Put on a plate or tray, refrigerate for 30 minutes to firm up.', 'Store in an airtight container in the fridge. Lasts 1 week.'],
+    tip: 'Base recipe variations: add cinnamon for warmth; swap peanut butter for almond butter; add dried cranberries instead of choc chips; add a tbsp of cocoa powder for a chocolate version. One ball = ~185 kcal so stick to 1–2 as a snack.'
+  },
+  {
+    emoji: '🥩',
+    title: 'Deli Meats & Cheese Roll-Ups',
+    subtitle: 'Zero prep • High protein',
+    kcal: 180, protein: 20, carbs: 2, fat: 10, fibre: 0,
+    ingredients: ['4 slices deli turkey or chicken breast', '2 lite cheese slices', 'Optional: thin spread of mustard, or a sliver of cucumber inside each roll'],
+    steps: ['Lay a slice of deli meat flat.', 'Place a half-slice of cheese on top.', 'Add mustard or cucumber if using.', 'Roll up tightly.', 'Repeat. Eat as is or pack in a container.'],
+    tip: 'Buy from the deli counter at Woolies — ask for it sliced thin. Cheaper than pre-packaged and better quality. Make 6–8 at once and keep in the fridge.'
+  }
+];
 
-function setC(c){cat=c;sel=null;renderTabs();render();}
-function pick(i){sel=sel===i?null:i;render();}
+// ===================== GRAB & GO SNACKS =====================
+const grabSnacks = [
+  {
+    emoji: '🫙',
+    title: 'Greek Yoghurt (Tub or Pouch)',
+    kcal: 110, protein: 15,
+    desc: 'One of the best grab-and-go snacks available. High protein, low fat, and keeps you full.',
+    tips: ['Best options: Chobani 170g tub (~15g protein, 95 kcal), Farmers Union Protein Pouch (~20g protein)', 'Chobani Flip has a small topping to mix in — fun and still a good choice', 'Choose plain or low-sugar flavours — avoid ones with 20g+ sugar', 'Available: Woolies, Coles, most service stations']
+  },
+  {
+    emoji: '💪',
+    title: 'Protein Bars',
+    kcal: 190, protein: 20,
+    desc: 'Not all protein bars are equal. Some are basically chocolate bars in disguise. Here\'s what to look for.',
+    tips: ['Good options: Quest Bar, Musashi P30, Macro Mike, Vow Nutrition', 'What to look for on the label: 15g+ protein, under 200 kcal, under 10g sugar', 'Avoid: bars with 30g+ sugar or more fat than protein', 'Available: Woolies, Coles, Chemist Warehouse, servos, gym vending machines']
+  },
+  {
+    emoji: '🥩',
+    title: 'Beef Jerky',
+    kcal: 100, protein: 14,
+    desc: 'Great protein hit, shelf stable, and satisfying to chew. Watch the sodium — it\'s high, so don\'t eat it every day.',
+    tips: ['Best options: Jack Link\'s Original, Primo Beef Jerky, or bulk packs from Costco', 'Serving size is usually 25–30g — stick to one serve', 'Avoid: teriyaki or honey-flavoured versions (more sugar)', 'Available: service stations, Woolies, Coles, petrol stations, Costco']
+  },
+  {
+    emoji: '🫘',
+    title: 'Roasted Chickpeas',
+    kcal: 130, protein: 6,
+    desc: 'Crunchy, satisfying, and way better than chips. High fibre keeps you full.',
+    tips: ['Look for: Cobs Roasted Chickpeas or Munch Crunch in the health snack aisle', 'Flavours: sea salt, chilli lime, BBQ — all good', 'Serving: stick to 30–40g (the small individual snack bags are perfect)', 'Available: Woolies, Coles (health snack aisle), some servos']
+  },
+  {
+    emoji: '🧀',
+    title: 'Cheese & Crackers Packs',
+    kcal: 170, protein: 8,
+    desc: 'Ready-made portion-controlled packs. Convenient and satisfying.',
+    tips: ['Best options: Cracker Barrel Snack Packs, Bega Cheese & Crackers', 'Look for ones with wholegrain crackers — more fibre', 'Avoid: ones that come with a high-sugar jam — skip it or use very little', 'Available: Woolies, Coles (fridge/deli section), some petrol stations']
+  },
+  {
+    emoji: '🧀',
+    title: 'Babybel Cheese',
+    kcal: 70, protein: 5,
+    desc: 'Small, individually wrapped wax cheese rounds. Sit in your bag all day without needing refrigeration.',
+    tips: ['Babybel Light = 45 kcal, 5g protein each — better option', 'Babybel Original = 70 kcal, 4g protein each', 'Pair with an apple or almonds for a more complete snack', 'Available: Woolies, Coles (fridge section), most service stations']
+  },
+  {
+    emoji: '🥛',
+    title: 'Protein Milk (Ready-to-Drink)',
+    kcal: 160, protein: 25,
+    desc: 'Cold flavoured milk with added protein. Easy to grab from a servo fridge.',
+    tips: ['Best options: Masters High Protein Milk, Nippy\'s Protein Shake, a2 Protein Milk', 'Chocolate flavour tastes like a treat and still has 20–25g protein', 'Check the label — some "protein" milks are actually just flavoured milk (under 10g protein)', 'Available: service stations, Woolies, Coles, gyms']
+  },
+  {
+    emoji: '🍱',
+    title: 'Sushi Train Rice Paper Rolls',
+    kcal: 180, protein: 12,
+    desc: 'Fresh, light, and surprisingly filling. Good option if you\'re near a food court or sushi train.',
+    tips: ['Order: 2 prawn rice paper rolls or 2 chicken rice paper rolls', 'Avoid: fried options (spring rolls, tempura) — much higher calorie', 'Dipping sauce: ask for a small one — soy or sweet chilli, not peanut sauce (high cal)', 'Available: sushi trains, food courts, some Woolies delis']
+  },
+  {
+    emoji: '🥚',
+    title: 'Pre-Packed Boiled Eggs',
+    kcal: 140, protein: 12,
+    desc: 'Some supermarkets and delis sell pre-cooked peeled eggs. Or batch cook your own on Sunday — same thing.',
+    tips: ['Woolies sells 2-pack boiled eggs in the deli / prepared foods section in some stores', 'Or: boil 6–8 on Sunday and keep in the fridge all week — 5 days easy', 'Season with salt, pepper, or a dash of hot sauce', 'Pair with fruit for a complete snack hit']
+  },
+  {
+    emoji: '🥤',
+    title: 'Up&Go Protein or Sustagen',
+    kcal: 200, protein: 15,
+    desc: 'A drinkable breakfast or snack. Not ideal every day but useful when you\'re truly rushed at 5:30am.',
+    tips: ['Up&Go Protein (Blue): 200 kcal, 15g protein — better than the standard version', 'Sustagen Sport: 220 kcal, 14g protein — similar idea', 'Use as a backup only — real food is always better', 'Available: Woolies, Coles, most service stations and convenience stores']
+  }
+];
 
-function render(){
-  const show=cat==="All"?["Breakfast","Lunch","Dinner","Snacks & cheese","Protein shakes"]:[cat];
-  let h="";
-  show.forEach(sc=>{
-    const items=M.filter(m=>m.c===sc);
-    if(!items.length)return;
-    if(cat==="All")h+=`<p class="sec-label">${sc}</p>`;
-    h+=`<div class="grid">`;
-    items.forEach(m=>{
-      const i=M.indexOf(m),on=sel===i;
-      h+=`<div class="card${on?" sel":""}" onclick="pick(${i})">
-        <div class="card-name">${m.n}</div>
-        <div class="card-time">⏱ ${m.t} &nbsp;·&nbsp; Serves ${m.s}</div>
-        <div class="tags">${m.tags.map(t=>`<span class="tag ${t[1]}">${t[0]}</span>`).join("")}</div>
-      </div>`;
-    });
-    h+=`</div>`;
-    if(sel!==null){
-      const s=M[sel];
-      if(s&&s.c===sc){
-        h+=`<div class="detail">
-          <div class="det-name">${s.n}</div>
-          <div class="det-sub">${s.c} &nbsp;·&nbsp; ${s.t} &nbsp;·&nbsp; Serves ${s.s}</div>
-          <div class="det-why"><strong>Why this works:</strong> ${s.why}</div>
-          <div class="macros">
-            <div class="mac"><div class="mac-v">${s.mac.f}</div><div class="mac-l">Fat</div></div>
-            <div class="mac"><div class="mac-v">${s.mac.p}</div><div class="mac-l">Protein</div></div>
-            <div class="mac"><div class="mac-v">${s.mac.c}</div><div class="mac-l">Net carbs</div></div>
-          </div>
-          <div class="det-cols">
-            <div>
-              <div class="det-h">Ingredients</div>
-              <ul class="ing-list">${s.ing.map(i=>`<li>${i}</li>`).join("")}</ul>
-            </div>
-            <div>
-              <div class="det-h">Method</div>
-              <p class="method-txt">${s.meth}</p>
-              <div style="margin-top:.85rem">
-                <div class="det-h">Hormone targets</div>
-                <div class="tags">${s.hor.map(h=>`<span class="tag tl">${h}</span>`).join("")}</div>
-              </div>
-            </div>
-          </div>
-          ${s.sul?`<div class="sul-note"><span class="sul-icon">⚠️</span><span><strong>Sulphite note:</strong> ${s.sul}</span></div>`:""}
-        </div>`;
-      }
-    }
-  });
-  document.getElementById("body").innerHTML=h;
-}
+// ===================== TM31 MEALS =====================
+const tm31meals = [
+  {
+    emoji: '🍗',
+    title: 'Lemon Herb Chicken Risotto',
+    subtitle: 'TM31 • Hands-free • Creamy',
+    kcal: 480, protein: 42, carbs: 52, fat: 9, fibre: 4,
+    ingredients: ['300g chicken breast, diced into 2cm pieces', '1 brown onion, quartered', '1 leek, white part only, sliced', '2 garlic cloves', '300g arborio rice (must be arborio — not regular rice)', '800ml chicken stock (2 stock cubes + 800g water)', '150ml dry white wine OR extra 150ml stock', 'Juice and zest of 1 lemon', '1 cup frozen peas', '1 zucchini, diced', '20g parmesan, grated (optional)', 'Salt, pepper, fresh or dried parsley'],
+    steps: ['Add onion, leek and garlic to the TM31 bowl. Chop: 5 seconds, Speed 5. Scrape sides.', 'Add 15g olive oil. Cook: 3 minutes, 100°C, Speed 1.', 'Add chicken. Cook: 5 minutes, 100°C, Speed 1, Reverse.', 'Add arborio rice. Cook: 2 minutes, 100°C, Speed 1, Reverse (this toasts the rice).', 'Add stock, wine (if using), lemon juice and zest, zucchini.', 'Cook: 18 minutes, 100°C, Speed 1, Reverse. Set the timer.', 'Add frozen peas in the last 3 minutes.', 'Taste — add salt and pepper. Stir in parmesan if using. Serve immediately (risotto thickens as it sits).'],
+    tip: 'Risotto needs to be eaten fresh — it doesn\'t reheat as well as other meals. Make it for dinner and eat it that night. Leftovers can be made into fried risotto cakes the next day.'
+  },
+  {
+    emoji: '🌶️',
+    title: 'Mexican Pulled Chicken',
+    subtitle: 'TM31 • Shredded • Serve over rice',
+    kcal: 450, protein: 48, carbs: 38, fat: 8, fibre: 9,
+    ingredients: ['2 large chicken breasts (about 400g)', '1 brown onion, quartered', '3 garlic cloves', '1 tsp cumin', '1 tsp smoked paprika', '½ tsp chilli powder (or to taste)', '400g can diced tomatoes', '400g can black beans, drained', '½ cup frozen corn', '1 chicken stock cube + 100ml water', 'Juice of 1 lime (or 1 tbsp bottled lime juice)', '1 microwave brown rice cup per serve'],
+    steps: ['Add onion and garlic to the bowl. Chop: 5 seconds, Speed 5. Scrape sides.', 'Add 10g oil. Cook: 3 minutes, 100°C, Speed 1.', 'Add cumin, smoked paprika, chilli. Cook: 1 minute, 100°C, Speed 1 (toasts the spices).', 'Add diced tomatoes, black beans, corn, stock cube and water. Stir.', 'Place whole chicken breasts into the bowl — push them down into the sauce.', 'Cook: 30 minutes, 100°C, Speed 1, Reverse.', 'Remove chicken breasts with tongs (they\'ll be very soft). Place in a bowl and shred with two forks — it pulls apart easily.', 'Return shredded chicken to the bowl. Add lime juice. Stir through.', 'Serve over microwaved rice.'],
+    tip: 'This makes enough for 3 serves — great for batch cooking. The pulled chicken also works in wraps or on the tradie salad base instead of rice.'
+  },
+  {
+    emoji: '🥩',
+    title: 'Bolognese Sauce (TM31)',
+    subtitle: 'TM31 • Classic • Serve over pasta',
+    kcal: 490, protein: 42, carbs: 50, fat: 12, fibre: 7,
+    ingredients: ['1 brown onion, quartered', '2 carrots, roughly chopped', '2 celery stalks, roughly chopped', '3 garlic cloves', '400g extra-lean beef mince', '400g can diced tomatoes', '1 beef stock cube + 150ml water', '1 tbsp tomato paste', '1 tsp dried mixed herbs', '1 tsp smoked paprika', 'Salt and pepper', '80g dried penne or spaghetti per serve (cooked separately)'],
+    steps: ['Add onion, carrot, celery and garlic to bowl. Chop: 5 seconds, Speed 5. Scrape sides.', 'Add 10g oil. Cook: 5 minutes, 100°C, Speed 1.', 'Add beef mince. Cook: 8 minutes, 100°C, Speed 1, Reverse — breaking up the mince.', 'Add diced tomatoes, stock cube, water, tomato paste, herbs and paprika.', 'Cook: 25 minutes, 100°C, Speed 1, Reverse.', 'Meanwhile, boil pasta in a separate pot as per packet.', 'Season with salt and pepper. Serve sauce over drained pasta.'],
+    tip: 'This makes 4 serves of sauce — freeze half in zip-lock bags. The TM31 chops the veg for you so there\'s almost no prep. Weigh your pasta dry: 80g per serve.'
+  },
+  {
+    emoji: '🍛',
+    title: 'Thai Green Curry (TM31)',
+    subtitle: 'TM31 • Fragrant • Serve over rice',
+    kcal: 460, protein: 40, carbs: 38, fat: 14, fibre: 6,
+    ingredients: ['350g chicken breast, diced', '1 brown onion, quartered', '2 garlic cloves', '1 tbsp green curry paste (Maesri or Valcom — use 1 tbsp for mild, 2 for hot)', '200ml light coconut milk', '200ml chicken stock (1 stock cube + 200g water)', '1 zucchini, sliced into rounds', '1 cup broccoli florets', '1 cup baby spinach', 'Fish sauce: 1 tbsp (from Asian section at Woolies)', 'Juice of ½ lime', '1 microwave brown rice cup per serve'],
+    steps: ['Add onion and garlic to bowl. Chop: 5 seconds, Speed 5. Scrape sides.', 'Add 10g oil and green curry paste. Cook: 3 minutes, 100°C, Speed 1. The kitchen will smell amazing.', 'Add chicken. Cook: 5 minutes, 100°C, Speed 1, Reverse.', 'Add coconut milk, chicken stock, zucchini and broccoli.', 'Cook: 15 minutes, 100°C, Speed 1, Reverse.', 'Add spinach in the last 2 minutes — it wilts quickly.', 'Add fish sauce and lime juice. Taste — adjust heat by adding more curry paste if you want.', 'Serve over microwaved rice.'],
+    tip: 'Green curry paste keeps in the fridge for months after opening. Start with 1 tbsp if you don\'t know your heat tolerance — you can always add more. Fish sauce smells strong but adds incredible depth to the flavour.'
+  },
+  {
+    emoji: '🍄',
+    title: 'Chicken & Mushroom Stroganoff (TM31)',
+    subtitle: 'TM31 • Creamy comfort food',
+    kcal: 430, protein: 44, carbs: 30, fat: 12, fibre: 4,
+    ingredients: ['350g chicken breast, diced', '1 brown onion, quartered', '2 garlic cloves', '300g button mushrooms, halved', '200ml chicken stock (1 stock cube + 200g water)', '150ml light sour cream (or plain Greek yoghurt — less fat)', '1 tbsp Dijon mustard', '1 tbsp Worcestershire sauce', 'Salt and pepper', '1 serve egg noodles or microwave rice'],
+    steps: ['Add onion and garlic to bowl. Chop: 5 seconds, Speed 5. Scrape sides.', 'Add 10g oil. Cook: 3 minutes, 100°C, Speed 1.', 'Add chicken. Cook: 5 minutes, 100°C, Speed 1, Reverse.', 'Add mushrooms, stock, Dijon mustard and Worcestershire sauce.', 'Cook: 15 minutes, 100°C, Speed 1, Reverse.', 'Add light sour cream (or Greek yoghurt). Stir through with the spatula — do NOT cook again after this or the cream will split.', 'Season with salt and pepper. Serve over noodles or rice.'],
+    tip: 'Greek yoghurt is the lower-fat swap for sour cream — stir it in off the heat and the sauce stays creamy. Worcestershire sauce is in the condiments aisle at any supermarket.'
+  },
+  {
+    emoji: '🐟',
+    title: 'Steamed Fish with Ginger & Soy (TM31 Varoma)',
+    subtitle: 'TM31 Varoma • Clean & light',
+    kcal: 370, protein: 44, carbs: 28, fat: 7, fibre: 5,
+    ingredients: ['2 white fish fillets (basa or barramundi, about 300g)', '2 cups bok choy or broccoli', '700ml water in the bowl', '1 chicken or fish stock cube', '3 slices fresh ginger', '2 tbsp reduced-salt soy sauce', '1 tsp sesame oil', '2 shallots, sliced thin', '1 microwave brown rice cup per serve'],
+    steps: ['Pour 700ml water into the TM31 bowl. Add stock cube and ginger slices.', 'Place bok choy or broccoli in the Varoma tray.', 'Lay fish fillets flat on top of the vegetables in the Varoma.', 'Drizzle 1 tbsp soy sauce over the fish. Place Varoma lid on.', 'Place Varoma on top of the TM31.', 'Cook: 18–22 minutes, Varoma temp, Speed 2. (Basa needs 18 mins, thicker fillets 22 mins.)', 'Check fish is cooked — it should flake easily with a fork.', 'Microwave rice. Serve fish and veg over rice. Mix remaining soy sauce with sesame oil and drizzle over. Top with sliced shallots.'],
+    tip: 'Basa fillets are cheap, mild-flavoured, and great for beginners. Find them in the frozen fish section. No bones to worry about.'
+  },
+  {
+    emoji: '🥦',
+    title: 'Beef & Bean Chilli (TM31)',
+    subtitle: 'TM31 • Hearty & high protein',
+    kcal: 480, protein: 40, carbs: 38, fat: 12, fibre: 11,
+    ingredients: ['1 brown onion, quartered', '2 garlic cloves', '400g extra-lean beef mince', '400g can diced tomatoes', '400g can kidney beans, drained', '1 tsp cumin', '1 tsp smoked paprika', '½ tsp chilli powder (adjust to taste)', '1 beef stock cube + 100ml water', 'Salt and pepper', '1 microwave rice cup per serve'],
+    steps: ['Add onion and garlic to bowl. Chop: 5 seconds, Speed 5. Scrape sides.', 'Add 10g oil. Cook: 3 minutes, 100°C, Speed 1.', 'Add mince. Cook: 7 minutes, 100°C, Speed 1, Reverse — break up the mince.', 'Add tomatoes, kidney beans, spices, stock cube and water.', 'Cook: 20 minutes, 100°C, Speed 1, Reverse.', 'Taste and adjust salt, pepper and chilli. Serve over rice.'],
+    tip: 'Make a double batch — it freezes perfectly. Portion into flat zip-lock bags, freeze, then stand up like books in the freezer.'
+  },
+  {
+    emoji: '🧆',
+    title: 'Chickpea & Spinach Curry (TM31)',
+    subtitle: 'TM31 • High fibre • Vegetarian',
+    kcal: 400, protein: 18, carbs: 52, fat: 9, fibre: 13,
+    ingredients: ['1 brown onion, quartered', '3 garlic cloves', '1 tsp fresh ginger', '2 tsp curry powder', '1 tsp cumin', '400g can chickpeas, drained', '400g can diced tomatoes', '200ml light coconut milk', '2 large handfuls baby spinach', '1 stock cube + 100ml water', '1 microwave brown rice cup per serve'],
+    steps: ['Add onion, garlic and ginger. Chop: 5 seconds, Speed 5. Scrape sides.', 'Add 10g oil. Cook: 3 minutes, 100°C, Speed 1.', 'Add curry powder and cumin. Cook: 1 minute, 100°C, Speed 1 (toasts the spices).', 'Add chickpeas, tomatoes, coconut milk, stock cube and water.', 'Cook: 15 minutes, 100°C, Speed 1, Reverse.', 'Add spinach in the last 2 minutes — it wilts quickly.', 'Serve over rice.'],
+    tip: 'This is a proper curry at 400 kcal. The high fibre keeps you full for hours. Great batch-cook meal — makes 3 serves.'
+  }
+];
 
-renderTabs();render();
+// ===================== PACKET MEALS =====================
+const packetMeals = [
+  {
+    emoji: '🍛',
+    title: 'Butter Chicken & Rice',
+    subtitle: 'Jar sauce • Family favourite',
+    kcal: 490, protein: 42, carbs: 48, fat: 10, fibre: 3,
+    ingredients: ['400g chicken breast, diced', '1 jar Patak\'s Butter Chicken sauce', '1 microwave brown rice cup', '1 cup frozen spinach (optional — adds volume)'],
+    steps: ['Dice chicken into bite-size pieces.', 'Spray a non-stick pan with olive oil, heat on medium-high.', 'Cook chicken 4–5 minutes, stirring, until no longer pink.', 'Pour the jar of sauce over. Add frozen spinach if using.', 'Stir and simmer on low heat for 10 minutes.', 'Microwave rice while it simmers.', 'Serve chicken over rice.'],
+    tip: 'Look for sauces under 100 kcal per 100g. Patak\'s Butter Chicken or Tikka Masala are solid. Avoid creamy korma — higher in fat.'
+  },
+  {
+    emoji: '🥩',
+    title: 'Beef Stroganoff (Packet Sauce)',
+    subtitle: 'Comfort food • Quick dinner',
+    kcal: 470, protein: 38, carbs: 42, fat: 12, fibre: 3,
+    ingredients: ['350g lean beef strips or diced beef', '1 packet Continental Beef Stroganoff sauce mix', '300ml water (as per packet)', '1 cup button mushrooms, sliced', '1 serve egg noodles or microwave rice'],
+    steps: ['Cook noodles or rice as per packet. Set aside.', 'Spray pan with oil. Cook beef strips on high heat 2–3 minutes until browned.', 'Add mushrooms, cook 2 minutes more.', 'Mix sauce sachet with water as per directions. Pour over beef.', 'Stir and simmer 5 minutes until thick.', 'Serve over noodles or rice.'],
+    tip: 'Continental packet sauces are shelf stable and cheap. Buy a few different flavours as backup dinners.'
+  },
+  {
+    emoji: '🌮',
+    title: 'Lean Beef Tacos (Old El Paso Kit)',
+    subtitle: 'Fun meal • Easy to make',
+    kcal: 460, protein: 36, carbs: 44, fat: 12, fibre: 5,
+    ingredients: ['400g lean beef mince', '1 Old El Paso Taco Kit', '1 cup shredded lettuce', '1 cup low-fat Greek yoghurt (replaces sour cream)', '½ cup frozen corn (microwaved)'],
+    steps: ['Brown the mince in a pan on high heat. Drain any fat.', 'Add taco seasoning packet + water as directed. Stir and simmer 5 minutes.', 'Warm taco shells in oven or microwave.', 'Fill shells with mince, lettuce, corn, and a spoon of Greek yoghurt.'],
+    tip: 'Greek yoghurt is a perfect sour cream substitute — same texture, way less fat, more protein. Most people can\'t tell the difference.'
+  },
+  {
+    emoji: '🍝',
+    title: 'Chicken Pasta with Jar Sauce',
+    subtitle: 'Simple • Crowd pleaser',
+    kcal: 480, protein: 40, carbs: 52, fat: 8, fibre: 5,
+    ingredients: ['80g dried penne or fusilli per serve', '300g chicken breast, diced', '1 jar Leggo\'s Napolitana or Arrabbiata sauce', '1 cup frozen spinach or zucchini', 'Pinch of chilli flakes (optional)', '10g parmesan (optional)'],
+    steps: ['Boil pasta in salted water as per packet (10–12 mins). Drain.', 'While pasta cooks: spray a pan with oil, cook chicken 5–6 minutes.', 'Pour jar sauce over chicken, add frozen veg, simmer 5 minutes.', 'Add drained pasta to the pan and stir through.', 'Sprinkle parmesan if using.'],
+    tip: 'Weigh your pasta dry — 80g per serve. It looks small dry but nearly doubles when cooked.'
+  },
+  {
+    emoji: '🍱',
+    title: 'Stir-Fry with Packet Sauce',
+    subtitle: 'Fastest dinner possible',
+    kcal: 420, protein: 38, carbs: 38, fat: 9, fibre: 6,
+    ingredients: ['300g chicken breast or lean beef, sliced thin', '1 bag frozen stir-fry vegetables (500g)', '1 sachet Chang\'s Stir-Fry Sauce (honey soy or black bean)', '1 microwave rice cup'],
+    steps: ['Microwave rice cup for 90 seconds.', 'Heat pan or wok on HIGH heat. Spray with oil.', 'Cook chicken or beef strips 3–4 minutes until browned.', 'Add frozen veg — stir constantly for 3 minutes.', 'Pour sauce sachet over. Toss together 1 minute.', 'Serve over rice.'],
+    tip: 'HIGH heat is the secret. You want a proper sizzle. Takes 10 minutes total.'
+  },
+  {
+    emoji: '🥘',
+    title: 'Lean Lamb & Veg Casserole',
+    subtitle: 'Oven bake • Set and forget',
+    kcal: 450, protein: 38, carbs: 30, fat: 13, fibre: 7,
+    ingredients: ['400g lean lamb leg diced', '1 packet Continental Casserole Base mix', '500ml water', '2 carrots, roughly chopped', '2 celery stalks, roughly chopped', '1 cup frozen peas'],
+    steps: ['Preheat oven to 170°C.', 'Put lamb and chopped veg into an oven-proof pot or baking dish with a lid.', 'Mix sachet with water, pour over lamb and veg.', 'Put lid on and bake for 1.5 hours.', 'Add frozen peas in the last 10 minutes.', 'Taste and season. Serve as is.'],
+    tip: '10 minutes to prep, then the oven does everything. Great Sunday evening meal — leftovers for Monday.'
+  },
+  {
+    emoji: '🍯',
+    title: 'Honey Soy Chicken Thighs',
+    subtitle: 'Oven baked • 3 ingredients',
+    kcal: 460, protein: 40, carbs: 32, fat: 14, fibre: 4,
+    ingredients: ['500g skinless chicken thighs (or breast if you prefer)', '3 tbsp honey soy marinade (Maggi or Fountain brand)', '1 microwave brown rice cup', '2 cups frozen stir-fry veg or broccoli'],
+    steps: ['Put chicken thighs in a baking dish.', 'Pour the honey soy marinade over and turn to coat both sides.', 'If you have time, let it sit for 15–30 minutes (or overnight in the fridge).', 'Preheat oven to 200°C. Bake for 25–30 minutes until golden and cooked through.', 'Microwave rice and veg separately.', 'Serve chicken over rice with veg on the side. Spoon pan juices over the top.'],
+    tip: 'Chicken thighs have a bit more fat than breast but they\'re more forgiving to cook — harder to dry out. The marinade caramelises in the oven and makes a sticky, flavourful sauce.'
+  },
+  {
+    emoji: '🥬',
+    title: 'San Choy Bow (Lettuce Cups)',
+    subtitle: 'Asian • Fun to eat • Low carb',
+    kcal: 380, protein: 34, carbs: 22, fat: 14, fibre: 4,
+    ingredients: ['400g lean pork or chicken mince', '1 can water chestnuts, drained and roughly chopped', '3 tbsp oyster sauce', '1 tbsp reduced-salt soy sauce', '1 tbsp sesame oil', '2 garlic cloves, crushed (or ½ tsp garlic powder)', '3 shallots, sliced', '8 large iceberg lettuce leaves (separated as cups)', 'Optional: 1 tsp ginger, sriracha for heat'],
+    steps: ['Separate iceberg lettuce leaves carefully to make cups. Rinse and set aside on a plate.', 'Heat a pan on high heat. Spray with oil.', 'Cook mince for 5–6 minutes, breaking it up, until cooked through.', 'Add garlic (and ginger if using). Cook 1 more minute.', 'Add water chestnuts, oyster sauce, soy sauce and sesame oil. Stir through for 2 minutes.', 'Spoon mince mixture into lettuce cups.', 'Top with sliced shallots. Eat like a taco.'],
+    tip: 'Water chestnuts are in the Asian foods aisle at Woolies or Coles. They add a great crunch. San choy bow is genuinely fun to eat and very low carb — perfect for a lighter dinner.'
+  },
+  {
+    emoji: '🍝',
+    title: 'Tuna Pasta Bake',
+    subtitle: 'Aussie classic • Easy comfort food',
+    kcal: 470, protein: 38, carbs: 52, fat: 10, fibre: 4,
+    ingredients: ['150g dried penne or spiral pasta', '2 x 95g cans tuna in springwater, drained', '1 can Campbell\'s Condensed Cream of Mushroom Soup (no added water)', '½ cup frozen peas', '½ cup frozen corn', '½ cup lite grated cheese', 'Salt, pepper, mixed herbs'],
+    steps: ['Preheat oven to 180°C.', 'Cook pasta in boiling salted water for 2 minutes less than the packet says — it will finish cooking in the oven.', 'Drain pasta and put in an oven-proof dish.', 'Add the condensed mushroom soup straight from the can (no water) — it\'s thick and that\'s what makes the sauce.', 'Add drained tuna, frozen peas and corn. Mix everything together.', 'Season with salt, pepper and herbs.', 'Sprinkle cheese on top.', 'Bake 20–25 minutes until golden and bubbling.'],
+    tip: 'Don\'t add water to the condensed soup — it\'s meant to be thick to make the bake saucy. This feeds 3 people or gives you leftovers for lunch tomorrow. It reheats perfectly.'
+  }
+];
+
+// ===================== RENDER ALL =====================
+document.getElementById('salad-protein-grid').innerHTML = saladProteins.map(d => makeCard(d, false)).join('');
+renderCards(lunches, 'lunch-grid');
+renderCards(snacks, 'snack-grid');
+document.getElementById('grab-grid').innerHTML = grabSnacks.map(makeGrabCard).join('');
+renderCards(tm31meals, 'tm31-grid');
+renderCards(packetMeals, 'packet-grid');
 </script>
 </body>
 </html>
